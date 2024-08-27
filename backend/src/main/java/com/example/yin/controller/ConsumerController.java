@@ -13,17 +13,7 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class ConsumerController {
 
-    @Autowired
-    private ConsumerService consumerService;
 
-    @Autowired
-    ConsumerServiceImpl consumerServiceimpl;
-
-    @Autowired
-    private SimpleOrderManager simpleOrderManager;
-
-    @Autowired
-    StringRedisTemplate stringRedisTemplate;
     /**
      * TODO 前台页面调用 注册
      * 用户注册
