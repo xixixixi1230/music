@@ -7,6 +7,7 @@
     <resultMap id="BaseResultMap" type="generator.domain.Song">
         <id property="id" column="id" jdbcType="INTEGER"/>
         <result property="singerId" column="singer_id" jdbcType="INTEGER"/>
+        <result property="singerName" column="singer_name" jdbcType="VARCHAR"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="introduction" column="introduction" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
@@ -17,7 +18,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,singer_id,name,
+        id,singer_id,singer_name,name,
         introduction,create_time,update_time,
         pic,lyric,url
     </sql>
