@@ -1,21 +1,26 @@
 package com.example.yin.controller;
 
-import com.example.yin.common.R;
-import com.example.yin.model.request.ConsumerRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpSession;
+import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
+import com.example.yin.common.R;
+import com.example.yin.model.domain.Consumer;
+import com.example.yin.model.request.ConsumerRequest;
+import com.example.yin.service.ConsumerService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.*;
+import com.example.yin.common.Consts;
+import javax.servlet.http.HttpServletRequest;
 
 
 @RestController
 public class ConsumerController {
-
+    @Autowired
+    private ConsumerService consumerService;
 
     /**
-     * TODO 前台页面调用 注册
+     * 前台页面调用 注册
      * 用户注册
      */
     @PostMapping("/user/add")
@@ -24,113 +29,39 @@ public class ConsumerController {
     }
 
     /**
-     * TODO 前台页面调用  登录
-     * 登录判断
+     * 前端用户登录
      */
-    @PostMapping("/user/login/status")
-    public R loginStatus(@RequestBody ConsumerRequest loginRequest, HttpSession session) {
-        return consumerService.loginStatus(loginRequest, session);
-    }
-    /**
-     * email登录
-     */
-    @PostMapping("/user/email/status")
-    public R loginEmailStatus(@RequestBody ConsumerRequest loginRequest, HttpSession session) {
-        return consumerService.loginEmailStatus(loginRequest, session);
-    }
-
-    /**
-     * 密码恢复（忘记密码）
-     */
-
-    @PostMapping("/user/resetPassword")
-    public R resetPassword(@RequestBody ResetPasswordRequest passwordRequest){
-        Consumer user = consumerService.findByEmail(passwordRequest.getEmail());
-        String code = stringRedisTemplate.opsForValue().get("code");
-        if (user==null){
-            return R.fatal("用户不存在");
-        }else if (!code.equals(passwordRequest.getCode())){
-            return R.fatal("验证码不存在或失效");
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public Object login(HttpServletRequest request) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        String username = request.getParameter("username").trim();     //账号
+        String password = request.getParameter("password").trim();     //密码
+        if(username==null||username.equals("")){
+            jsonObject.put(Consts.CODE,0);
+            jsonObject.put(Consts.MSG,"用户名不能为空");
+            return jsonObject;
         }
-        ConsumerRequest consumerRequest=new ConsumerRequest();
-        BeanUtils.copyProperties(user, consumerRequest);
-        System.out.println(user);
-        System.out.println(consumerRequest);
-        consumerRequest.setPassword(passwordRequest.getPassword());
-        consumerServiceimpl.updatePassword01(consumerRequest);
-
-        return R.success("密码修改成功");
-    }
-
-    /**
-     * 发送验证码功能
-     */
-    @GetMapping("/user/sendVerificationCode")
-    public R sendCode(@RequestParam String email){
-        Consumer user = consumerService.findByEmail(email);
-        if (user==null){
-            return R.fatal("用户不存在");
+        if(password==null||password.equals("")){
+            jsonObject.put(Consts.CODE,0);
+            jsonObject.put(Consts.MSG,"密码不能为空");
+            return jsonObject;
         }
-        String code = RandomUtils.code();
-        simpleOrderManager.sendCode(code,email);
-        //保存在redis中
-        stringRedisTemplate.opsForValue().set("code",code,5, TimeUnit.MINUTES);
-        return R.success("发送成功");
+
+        //保存到前端用户的对象中
+        Consumer consumer = new Consumer();
+        consumer.setUsername(username);
+        consumer.setPassword(password);
+        boolean flag = consumerService.verifyPassword(username,password);
+        if(flag){   //验证成功
+            jsonObject.put(Consts.CODE,1);
+            jsonObject.put(Consts.MSG,"登录成功");
+            jsonObject.put("userMsg",consumerService.getByUsername(username));
+            return jsonObject;
+        }
+        jsonObject.put(Consts.CODE,0);
+        jsonObject.put(Consts.MSG,"用户名或密码错误");
+        return jsonObject;
     }
 
-
-    /**
-     * TODO 管理界面调用
-     * 返回所有用户
-     */
-    @GetMapping("/user")
-    public R allUser() {
-        return consumerService.allUser();
-    }
-
-
-    /**
-     * TODO 用户界面调用
-     * 返回指定 ID 的用户
-     */
-    @GetMapping("/user/detail")
-    public R userOfId(@RequestParam int id) {
-        return consumerService.userOfId(id);
-    }
-
-    /**
-     * TODO 管理界面的调用
-     * 删除用户
-     */
-    @GetMapping("/user/delete")
-    public R deleteUser(@RequestParam int id) {
-        return consumerService.deleteUser(id);
-    }
-
-    /**
-     * TODO 前后台界面的调用
-     * 更新用户信息
-     */
-    @PostMapping("/user/update")
-    public R updateUserMsg(@RequestBody ConsumerRequest updateRequest) {
-        return consumerService.updateUserMsg(updateRequest);
-    }
-
-    /**
-     * TODO 前后台更新用户的密码
-     * 更新用户密码
-     */
-    @PostMapping("/user/updatePassword")
-    public R updatePassword(@RequestBody ConsumerRequest updatePasswordRequest) {
-        return consumerService.updatePassword(updatePasswordRequest);
-    }
-
-    /**
-     * 更新用户头像
-     */
-    @PostMapping("/user/avatar/update")
-    public R updateUserPic(@RequestParam("file") MultipartFile avatorFile, @RequestParam("id") int id) {
-        return consumerService.updateUserAvator(avatorFile, id);
-    }
 
 }
