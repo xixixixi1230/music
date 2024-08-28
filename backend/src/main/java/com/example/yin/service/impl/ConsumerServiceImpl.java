@@ -3,6 +3,7 @@ package com.example.yin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.yin.common.R;
+import com.example.yin.controller.MinioUploadController;
 import com.example.yin.mapper.ConsumerMapper;
 import com.example.yin.model.domain.Consumer;
 import com.example.yin.model.request.ConsumerRequest;
@@ -12,13 +13,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpSession;
-import java.nio.charset.StandardCharsets;
-import java.util.Date; // 确保引入了这个包
-
-import static com.example.yin.constant.Constants.SALT;
+import java.util.Date;
 
 @Service
 public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
@@ -26,6 +23,8 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
 
     @Autowired
     private ConsumerMapper consumerMapper;
+    @Autowired
+    private MinioUploadController minioUploadController;
 
     @Override
     public boolean existUser(String username) {
@@ -49,9 +48,8 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
         // 设置注册时间为当前时间
         consumer.setCreateTime(new Date());
 
-        // MD5加密密码
-        String password = DigestUtils.md5DigestAsHex((SALT + registryRequest.getPassword()).getBytes(StandardCharsets.UTF_8));
-        consumer.setPassword(password);
+        // 直接使用用户输入的密码，不进行加密
+        consumer.setPassword(registryRequest.getPassword());
 
         // 处理可选字段
         if (StringUtils.isBlank(consumer.getPhoneNum())) {
@@ -91,7 +89,10 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
 
     @Override
     public boolean verifyPassword(String username, String password) {
-        return consumerMapper.verifyPassword(username,password)>0;
+        // 直接进行密码比较，不加密
+        QueryWrapper<Consumer> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username", username).eq("password", password);
+        return consumerMapper.selectCount(queryWrapper) > 0;
     }
 
     /**
@@ -104,5 +105,50 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
         return consumerMapper.getByUsername(username);
     }
 
+    @Override
+    public Consumer findByEmail(String email) {
+        QueryWrapper<Consumer> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", email);
+        Consumer consumer = consumerMapper.selectOne(queryWrapper);
+        return consumer;
+    }
+
+    @Override
+    public R updatePassword01(ConsumerRequest updatePasswordRequest) {
+        Consumer consumer = new Consumer();
+        consumer.setId(updatePasswordRequest.getId());
+        // 直接使用用户输入的密码，不加密
+        consumer.setPassword(updatePasswordRequest.getPassword());
+
+        if (consumerMapper.updateById(consumer) > 0) {
+            return R.success("密码修改成功");
+        } else {
+            return R.error("密码修改失败");
+        }
+    }
+    @Override
+    public R updateUserMsg(ConsumerRequest updateRequest) {
+        Consumer consumer = new Consumer();
+        BeanUtils.copyProperties(updateRequest, consumer);
+        if (consumerMapper.updateById(consumer) > 0) {
+            return R.success("修改成功");
+        } else {
+            return R.error("修改失败");
+        }
+    }
+    @Override
+    public R updateUserAvator(MultipartFile avatorFile, int id) {
+        String fileName = avatorFile.getOriginalFilename();
+        String imgPath = "/img/avatorImages/" + fileName;
+        Consumer consumer = new Consumer();
+        consumer.setId(id);
+        consumer.setAvator(imgPath);
+        String s = minioUploadController.uploadAtorImgFile(avatorFile);
+        if (s.equals("File uploaded successfully!")&&consumerMapper.updateById(consumer) > 0) {
+            return R.success("上传成功", imgPath);
+        } else {
+            return R.error("上传失败");
+        }
+    }
 
 }

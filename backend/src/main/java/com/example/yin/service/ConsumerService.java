@@ -17,4 +17,11 @@ public interface ConsumerService extends IService<Consumer> {
     boolean verifyPassword(String username, String password);
 
     Object getByUsername(String username);
+    Consumer findByEmail (String email);
+
+    R updatePassword01(ConsumerRequest updatePasswordRequest);
+
+    R updateUserMsg(ConsumerRequest updateRequest);
+
+    R updateUserAvator(MultipartFile avatorFile, int id);
 }
