@@ -5,48 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01b759cb-e02f-4fc0-910a-aa0545e767c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/mybatisx/templates.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d94d735e-3a14-4286-8cc6-d5f18519e884.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d94d735e-3a14-4286-8cc6-d5f18519e884.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d94d735e-3a14-4286-8cc6-d5f18519e884/storage_v2/_src_/schema/music.Je42Bg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d94d735e-3a14-4286-8cc6-d5f18519e884/storage_v2/_src_/schema/music.Je42Bg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/generator/domain/Singer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generator/domain/Singer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/generator/mapper/SingerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generator/mapper/SingerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/generator/service/SingerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generator/service/SingerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/generator/service/impl/SingerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generator/service/impl/SingerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/ListSongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/ListSongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/ListSongMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/ListSongMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/ListSongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/ListSongService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/ListSongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/ListSongServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ListSongMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ListSongMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SingerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SingerMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/MusicServerApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/MusicServerApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/common/Consts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/common/Consts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/common/R.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/common/R.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/constant/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/constant/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/controller/ConsumerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/controller/ConsumerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/controller/SongController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/controller/SongController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/mapper/ConsumerMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/mapper/ConsumerMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/mapper/SongMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/mapper/SongMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/model/daomain/Song.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/model/domain/Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/model/domain/Consumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/model/domain/Singer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/model/domain/Singer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/model/domain/Song.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/model/domain/Song.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/model/request/ConsumerRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/model/request/ConsumerRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/service/ConsumerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/service/ConsumerService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/service/SongService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/service/SongService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/ConsumerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/ConsumerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/SongServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/SongServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generator/domain/Singer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generator/domain/Singer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generator/domain/Song.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generator/domain/Song.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generator/mapper/SingerMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generator/mapper/SingerMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generator/mapper/SongMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generator/mapper/SongMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generator/service/SingerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generator/service/SingerService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generator/service/SongService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generator/service/SongService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generator/service/impl/SingerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generator/service/impl/SingerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generator/service/impl/SongServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generator/service/impl/SongServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/SingerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/SingerMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/yin/MusicServerApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/yin/MusicServerApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SongListMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SongListMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SongService.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SongService.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -151,7 +120,8 @@
       <option name="presentableId" value="Default" />
       <updated>1724761995092</updated>
       <workItem from="1724761996137" duration="1770000" />
-      <workItem from="1724833505237" duration="2176000" />
+      <workItem from="1724833505237" duration="9380000" />
+      <workItem from="1724850624700" duration="8827000" />
     </task>
     <servers />
   </component>
