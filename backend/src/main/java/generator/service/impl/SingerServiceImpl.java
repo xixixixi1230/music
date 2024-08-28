@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
 * @author zhangxinyi
 * @description 针对表【singer】的数据库操作Service实现
-* @createDate 2024-08-28 15:09:07
+* @createDate 2024-08-28 16:42:45
 */
 @Service
 public class SingerServiceImpl extends ServiceImpl<SingerMapper, Singer>
