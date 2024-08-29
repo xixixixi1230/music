@@ -42,15 +42,15 @@ public class ConsumerController {
     public R addUser(@RequestBody ConsumerRequest registryRequest) {
         return consumerService.addUser(registryRequest);
     }
-
     /**
-     * 前端用户登录
+     * 前台页面调用 登录
+     * 用户登录
      */
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public Object login(HttpServletRequest request) throws JSONException {
+    public Object login(@RequestParam("username") String username, @RequestParam("password") String password) throws JSONException {
+        System.out.println(username);
+        System.out.println(password);
         JSONObject jsonObject = new JSONObject();
-        String username = request.getParameter("username").trim();     //账号
-        String password = request.getParameter("password").trim();     //密码
         if(username==null||username.equals("")){
             jsonObject.put(Consts.CODE,0);
             jsonObject.put(Consts.MSG,"用户名不能为空");
@@ -68,9 +68,9 @@ public class ConsumerController {
         consumer.setPassword(password);
         boolean flag = consumerService.verifyPassword(username,password);
         if(flag){   //验证成功
-            jsonObject.put(Consts.CODE,1);
+            jsonObject.put(Consts.CODE,200);
             jsonObject.put(Consts.MSG,"登录成功");
-            jsonObject.put("userMsg",consumerService.getByUsername(username));
+            jsonObject.put("data",consumerService.getByUsername(username));
             return jsonObject;
         }
         jsonObject.put(Consts.CODE,0);
