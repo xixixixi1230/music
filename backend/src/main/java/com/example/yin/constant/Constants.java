@@ -11,7 +11,5 @@ public class Constants {
     public static String SINGER_PIC_PATH = "file:" + ASSETS_PATH + "/img/singerPic/";
     public static String BANNER_PIC_PATH = "file:" + ASSETS_PATH + "/img/swiper/";
 
-    /* 盐值加密 */
-    public static String SALT = "ljm";
 
 }

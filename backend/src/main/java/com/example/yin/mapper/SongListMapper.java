@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SongListMapper extends BaseMapper<SongList> {
+
+    public int insert(SongList songList);
+
+    public int delete(Integer songListId);
 }
