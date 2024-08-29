@@ -80,8 +80,14 @@ export default {
       let params = new URLSearchParams()
       params.append('username', this.loginForm.username)
       params.append('password', this.loginForm.password)
+      console.log(params);
+      // _this.notify('登录成功', 'success')
+      // _this.$store.commit('setLoginIn', true)
+      // _this.changeIndex('首页')
+      // _this.$router.push({path: '/'})
       loginIn(params)
         .then(res => {
+          console.log(res);
           if (res.code !== 200) {
             _this.notify(res.msg, 'error')
           } else {
@@ -90,14 +96,28 @@ export default {
             _this.$store.commit('setUserId', res.data.id)
             _this.$store.commit('setUsername', res.data.username)
             _this.$store.commit('setAvator', res.data.avator)
+            _this.$store.commit('setPhoneNum', res.data.phoneNum)
+            _this.$store.commit('setEmail', res.data.email)
+            _this.$store.commit('setBirth', res.data.birth)
+            _this.$store.commit('setLocation', res.data.location)
+            _this.$store.commit('setIntroduction', res.data.introduction)
+            _this.$store.commit('setSex', res.data.sex)
+            _this.$store.commit('setCreateTime', res.data.createTime)
             console.log("---------------",res.data)
             _this.$store.commit('userVipStatus', res.data.isVipUser)
             _this.changeIndex('首页')
             _this.$router.push({path: '/'})
+            console.log('登录成功');
+            console.log(this.$store.getters.userId);
+            console.log(this.$store.getters.username);
+            console.log(this.$store.getters.avator);
+            console.log(this.$store.getters.phoneNum);
+            console.log(this.$store.getters.email);
           }
         })
         .catch(err => {
-          _this.notify('用户名或密码错误', 'error')
+          _this.notify('用户名或密码错误', 'error');
+          console.log('登录fail');
         })
     },
     goSignUp () {
@@ -175,6 +195,15 @@ export default {
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
   font-size: 35px;
+  text-transform: uppercase;
+  line-height: 100px;
+}
+
+.form-wrapper .header:hover {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 37px;
+  font-weight: 520;
   text-transform: uppercase;
   line-height: 100px;
 }

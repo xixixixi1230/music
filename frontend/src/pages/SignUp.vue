@@ -15,8 +15,8 @@
             </el-form-item>
             <el-form-item prop="sex" class="border-wrapper">
                 <el-radio-group v-model="registerForm.sex">
-                    <el-radio :label="0">女</el-radio>
-                    <el-radio :label="1">男</el-radio>
+                    <el-radio :label="0">♀</el-radio>
+                    <el-radio :label="1">♂</el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-form-item prop="phoneNum" class="border-wrapper">
@@ -32,7 +32,7 @@
                 class="border-item">
               </input>
             </el-form-item>
-            <el-form-item class="border-wrapper form-row">
+            <el-form-item class="form-row">
               <el-date-picker
                 v-model="registerForm.birth"
                 placeholder="请选择生日"
@@ -172,6 +172,15 @@ export default {
   line-height: 50px;
 }
 
+.form-wrapper .header:hover {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 37px;
+  font-weight: 520;
+  text-transform: uppercase;
+  line-height: 50px;
+}
+
 .form-wrapper .input-wrapper input {
   font-family: 'Courier New', Courier, monospace;
   background-color: rgba(255, 255, 255, 0.55);
@@ -248,6 +257,7 @@ export default {
   border-radius: 80px;
   cursor: pointer;
   background-color: rgba(41, 45, 62, 0.8);
+  /* background-color: rgba(127, 219, 250, 0.59); */
   color: #fff;
   margin-right: 7px;
   font-family: 'Courier New', Courier, monospace;
@@ -297,56 +307,26 @@ export default {
   }
 }
 
-.el-date-picker {
-  width: auto;
-  .el-date-picker__editor-wrap {
-    background-color: rgba(162, 125, 183, 0.443);
-    border: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 15px;
-    color: #000000;
-    outline: none;
-  }
-  .el-date-picker__editor-wrap::placeholder {
-    text-transform: uppercase;
-  }
-  .el-date-picker__editor-wrap:hover {
-    background-color: rgba(255, 255, 255, 0.55);
-  }
-  .el-date-picker__editor-wrap:focus {
-    background-color: rgba(226, 15, 15, 0.55);
-  }
-  .el-date-picker__editor-wrap::after {
-    background-color: rgba(186, 18, 248, 0.55);
-  }
-  .el-date-picker__editor-wrap::before {
-    background-color: rgba(72, 245, 14, 0.55);
-  }
-  .el-date-picker__editor-wrap:hover::before {
-    background-color: rgba(94, 9, 233, 0.55);
-  }
-  .el-date-picker__editor-wrap:focus::before {
-    background-color: rgba(88, 24, 247, 0.55);
-  }
-  .el-date-picker__editor-wrap:hover::after {
-    background-color: rgba(220, 227, 6, 0.55);
-  }
-  .el-date-picker__editor-wrap:focus::after {
-    background-color: rgba(17, 213, 247, 0.55);
-  }
-}
 
 .form-row {
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-.form-row .el-date-picker,
-.form-row .el-select {
-  width: calc(50% - 10px);  /* 让元素均分宽度 */
+.form-row .el-date-picker {
+  width: 10%;  /* 让元素均分宽度 */
+  flex : 1;
   margin-right: 10px; /* 为元素之间添加间距 */
+
+}
+
+
+.form-row .el-select {
+  width: 78.5%;  /* 让元素均分宽度 */
+  flex : 1;
+  margin-right: 10px; /* 为元素之间添加间距 */
+  margin-top: 10px;
 }
 
 .form-row .el-select {

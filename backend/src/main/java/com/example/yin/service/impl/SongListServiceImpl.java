@@ -42,5 +42,15 @@ public class SongListServiceImpl extends ServiceImpl<SongListMapper, SongList> i
         queryWrapper.like("style",style);
         return R.success(null,songListMapper.selectList(queryWrapper));
     }
+    @Override
+    public R getSongListById(Long id) {
+        // 构建查询条件
+        QueryWrapper<SongList> queryWrapper = new QueryWrapper<>();
+        // 根据 ID 查询
+        queryWrapper.eq("id", id);
+        // 执行查询并返回结果
+        SongList songList = songListMapper.selectOne(queryWrapper);
+        return R.success(null, songList);
+    }
 
 }

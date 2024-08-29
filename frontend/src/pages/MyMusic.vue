@@ -13,11 +13,11 @@
         </div>
         <div class="album-content">
             <div class="album-title">
-                个性签名：{{introduction}}
+                MY🤷TAG：{{introduction}}
             </div>
             <div class="songs-body">
                 <album-content :songList="collectList">
-                    <template slot="title">我的收藏</template>
+                    <template slot="title" class="collection">MY COLLECTION</template>
                 </album-content>
             </div>
         </div>
@@ -55,51 +55,43 @@ export default {
         ])
     },
     mounted(){
-        this.getMsg(this.userId);
+        this.getMsg();
         this.getCollection(this.userId);
     },
     methods:{
-        getMsg(userId){
-            getUserOfId(userId)
-                .then(res =>{
-                    this.avator = res.avator;
-                    this.username = res.username;
-                    if(res.sex==0){
-                        this.userSex = '女';
-                    }else if (res.sex==1){
-                        this.userSex = '男';
-                    }
-                    this.birth = this.attachBirth(res.birth);
-                    this.location = res.location;
-                    this.introduction = res.introduction;                    
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+        getMsg(){
+            this.avator=this.$store.getters.avator;
+            this.username=this.$store.getters.username;
+            this.userSex=this.$store.getters.sex;
+            this.birth=this.$store.getters.birth;
+            this.location=this.$store.getters.location;
+            this.introduction=this.$store.getters.introduction;
+            console.log(this.avator);
+            console.log(this.username);
         },
         //获取我的收藏列表
         getCollection(userId){
-            getCollectOfUserId(userId)
-                .then(res =>{
-                        this.collection = res;
-                        //通过歌曲id获取歌曲信息   
-                        for(let item of this.collection){
-                            this.getSongsOfIds(item.songId);
-                        }             
-                    })
-                .catch(err => {
-                    console.log(err);
-                })
+            // getCollectOfUserId(userId)
+            //     .then(res =>{
+            //             this.collection = res;
+            //             //通过歌曲id获取歌曲信息
+            //             for(let item of this.collection){
+            //                 this.getSongsOfIds(item.songId);
+            //             }
+            //         })
+            //     .catch(err => {
+            //         console.log(err);
+            //     })
         },
-        //通过歌曲id获取歌曲信息   
+        //通过歌曲id获取歌曲信息
         getSongsOfIds(id){
-            songOfSongId(id)
-                .then(res =>{
-                        this.collectList.push(res);
-                    })
-                .catch(err => {
-                    console.log(err);
-                })
+            // songOfSongId(id)
+            //     .then(res =>{
+            //             this.collectList.push(res);
+            //         })
+            //     .catch(err => {
+            //         console.log(err);
+            //     })
         }
     }
 }

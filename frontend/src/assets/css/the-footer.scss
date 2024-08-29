@@ -5,6 +5,7 @@
   width: 100%;
   height: $footer-height;
   background-color: $theme-footer-color;
+  text-align: center;
   @include layout(center, center, column);
   p {
     height: 30px;

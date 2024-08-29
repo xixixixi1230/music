@@ -70,7 +70,7 @@ export default {
         getSongOfSingerId(){
             songOfSingerId(this.singerId)
                 .then(res => {
-                    this.$store.commit('setListOfSongs',res);
+                    this.$store.commit('setListOfSongs',res.data);
                 })
                 .catch(err =>{
                     console.log(err)

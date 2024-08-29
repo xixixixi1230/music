@@ -4,7 +4,7 @@
       <svg class="icon">
         <use xlink:href="#icon-erji"></use>
       </svg>
-      <span>music</span>
+      <span>♥~MUSIC</span>
     </div>
     <ul class="navbar">
       <li :class="{active: item.name == activeName}" v-for="item in navMsg" :key="item.path"

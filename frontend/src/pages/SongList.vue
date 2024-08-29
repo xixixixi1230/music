@@ -48,12 +48,13 @@ export default {
     },
 
     methods:{
-        getSongList(){            
+        getSongList(){
             getAllSongList()
                 .then(res =>{
                     this.currentPage = 1;
-                    this.albumDatas = res;
-                })           
+                    this.albumDatas = res.data;
+                    console.log(this.albumDatas);
+                })
         },
         //获取当前页
         handleCurrentChange(val){
@@ -74,8 +75,8 @@ export default {
             getSongListOfLikeStyle(style)
                 .then(res =>{
                         this.currentPage = 1;
-                        this.albumDatas = res;
-                    }) 
+                        this.albumDatas = res.data;
+                    })
         },
 
     }

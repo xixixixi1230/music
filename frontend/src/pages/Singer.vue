@@ -48,12 +48,12 @@ export default {
     },
 
     methods:{
-        getSingerList(){            
+        getSingerList(){
             getAllSinger()
                 .then(res =>{
                     this.currentPage = 1;
-                    this.albumDatas = res;
-                })           
+                    this.albumDatas = res.data;
+                })
         },
         //获取当前页
         handleCurrentChange(val){
@@ -74,8 +74,8 @@ export default {
             getSingerOfSex(sex)
                 .then(res =>{
                         this.currentPage = 1;
-                        this.albumDatas = res;
-                    }) 
+                        this.albumDatas = res.data;
+                    })
         },
 
     }

@@ -79,7 +79,8 @@ export default {
     getSongId () {
       listSongDetail(this.songListId)
         .then(res => {
-          for (let item of res) {
+          console.log(res);
+          for (let item of res.data) {
             this.getSongList(item.songId)
           }
           this.$store.commit('setListOfSongs', this.songLists)
@@ -92,8 +93,8 @@ export default {
     getSongList (id) {
       songOfSongId(id)
         .then(res => {
-          console.log("=======>>歌曲列表",res)
-          this.songLists.push(res)
+          console.log("=======>>歌曲列表",res.data)
+          this.songLists.push(res.data)
         })
         .catch(err => {
           console.log(err)

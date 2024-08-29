@@ -1,7 +1,7 @@
 const SHOW_PLAYER_KEY = 'showPlayer'
 const configure = {
   state: {
-    HOST: 'http://127.0.0.1:8888',  //后台访问地址根目录
+    HOST: 'http://192.168.134.147:9000/my-bucket',  //后台访问地址根目录
     activeName: '',                  //当前选中的菜单名
     showAside: false,               //是否显示播放中的歌曲列表
     loginIn: false,                 //用户是否已登录

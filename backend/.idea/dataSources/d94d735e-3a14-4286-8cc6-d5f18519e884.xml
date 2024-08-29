@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="music@192.168.134.147">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.49">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.51">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -929,8 +929,7 @@ music|schema||ZXY||UPDATE|G</Grants>
     </schema>
     <schema id="289" parent="1" name="music">
       <Current>1</Current>
-      <IntrospectionTimestamp>2024-08-29.00:26:31</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2024-08-28.08:26:31</LocalIntrospectionTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-08-28.08:26:31</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="290" parent="1" name="performance_schema">

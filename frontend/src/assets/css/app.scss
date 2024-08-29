@@ -2,7 +2,7 @@
 @import "global.scss";
 
 #app {
-  background-color: $theme-background-color;
+  background-color: rgba(186, 155, 227, 0.135);
   @include layout(flex-start, stretch, column);
 }
 

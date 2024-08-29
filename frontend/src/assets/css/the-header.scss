@@ -21,12 +21,28 @@
 
 .header-logo {
   margin: $header-logo-margin;
-  font-size: $font-size-logo;
+  font-size: x-large;
   font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgba(113, 171, 229, 0.51);
   white-space: nowrap;
   cursor: pointer;
   .icon {
-    @include icon(($header-height / 3) * 2, $color-black);
+    @include icon(($header-height / 3) * 2, rgba(179, 127, 187, 0.558));
+    vertical-align: middle;
+  }
+}
+
+.header-logo:hover {
+  margin: $header-logo-margin;
+  font-size: 27px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgba(113, 171, 229, 0.51);
+  white-space: nowrap;
+  cursor: pointer;
+  .icon {
+    @include icon(($header-height / 3) * 2, rgba(179, 127, 187, 0.558));
     vertical-align: middle;
   }
 }
@@ -44,6 +60,14 @@
     border-bottom: none;
     box-sizing: border-box;
     cursor: pointer;
+    transition: font-size 0.3s ease;
+
+    & font-enlarge {
+      font-size: 1.5 em;
+    }
+  }
+  li:hover {
+    font-size: 1.5em;
   }
 }
 
