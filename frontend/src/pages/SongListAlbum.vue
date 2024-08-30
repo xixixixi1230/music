@@ -15,7 +15,7 @@
       <div class="album-title">
         <p>{{ tempList.title }}</p>
       </div>
-      <div class="album-score">
+      <div class="album-score" v-if="!isSinger">
         <div>
           <h3>歌单评分：</h3>
           <div>
@@ -34,6 +34,8 @@
         <album-content :songList="songLists">
           <template slot="title">歌单</template>
         </album-content>
+      </div>
+      <div class="songs-comment">
         <comment :playId="songListId" :type="1"></comment>
       </div>
     </div>
@@ -49,7 +51,8 @@ import {
   getRankOfSongListId,
   getSongListScore,
   getUserRank,
-  songListRank
+  songListRank,
+  songOfSingerId,
 } from "../api/index";
 import AlbumContent from "../components/AlbumContent";
 import Comment from "../components/Comment";
@@ -68,6 +71,7 @@ export default {
       average: 0, //平均分
       score:0,
       rank: 0, //提交评价的分数
+      isSinger:"",
     };
   },
   computed: {
@@ -79,24 +83,42 @@ export default {
     ]),
   },
   created() {
+    let source = localStorage.getItem("contentList");
+    if(source=="Singer") this.isSinger=true;
     this.songListId = this.$route.params.id;
     this.getSongId();
     this.getRank(this.songListId);
-    console.log(this.songListId);
+    console.log("aonglistalbu7m",this.songListId);
     this.getOldRank();
   },
   methods: {
     getOldRank(){
+      if(!this.isSinger){
       getUserRank(this.songListId,this.userId)
       .then(res=>{
         this.rank=res.data/2;
         console.log(this.rank);
         
       })
+    }
     },
     //获取当前歌单的歌曲列表
     getSongId() {
-      listSongDetail(this.songListId)
+      // 歌手
+      if(this.isSinger){
+        songOfSingerId(this.songListId) 
+        .then((res) => {
+          console.log("singer",res);
+          this.songLists=res.data;
+          this.$store.commit("setListOfSongs", this.songLists);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
+      // 歌单
+      else{
+        listSongDetail(this.songListId)
         .then((res) => {
           console.log(res);
           for (let item of res.data) {
@@ -107,6 +129,7 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+      }
     },
     //根据歌曲id获取歌曲信息
     getSongList(id) {

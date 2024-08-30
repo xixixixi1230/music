@@ -45,6 +45,7 @@ export default {
     mounted(){
         this.singerStyle = singerStyle;
         this.getSingerList();
+        localStorage.setItem('contentList', 'Singer');
     },
 
     methods:{

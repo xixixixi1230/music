@@ -65,6 +65,9 @@ export default {
     },
     mounted(){
         this.getComment();
+        let source=localStorage.getItem("ContentList");
+        console.log("comment",source);
+        
     },
     methods: {
         //提交评论

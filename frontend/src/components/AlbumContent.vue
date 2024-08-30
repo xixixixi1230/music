@@ -9,7 +9,7 @@
         <div class="song-item">
           <span class="item-index"></span>
           <span class="item-title">歌曲名</span>
-          <span class="item-name">歌手</span>
+          <span class="item-name" v-if="!issinger">歌手</span>
           <span class="item-intro">专辑</span>
           <span>音乐MV</span>
         </div>
@@ -32,7 +32,7 @@
             {{ index + 1 }}
           </span>
           <span class="item-title">{{ item.name }}</span>
-          <span class="item-name">{{ item.singerName }}</span>
+          <span class="item-name" v-if="!issinger">{{ item.singerName }}</span>
           <span class="item-intro">{{ item.introduction }}</span>
           <span
             ><a
@@ -59,6 +59,7 @@ export default {
   data() {
     return {
       sid: "", //传来的歌曲id
+      issinger:""
     };
   },
   filters: {
@@ -84,6 +85,9 @@ export default {
     // getSongIdBySongListId(sid).then(res=>{
     // });
     console.log(this.songList);
+    let source=localStorage.getItem("contentList");
+    console.log(source);
+    if(source=="Singer") this.issinger=true;
     
   },
   beforeDestroy() {

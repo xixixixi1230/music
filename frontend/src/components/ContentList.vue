@@ -24,6 +24,8 @@ export default {
     methods: {
         goAlbum(item){
             let content=localStorage.getItem('contentList');
+            console.log(content);
+            
             if(content=="Home"){
                 console.log(content);
                 
@@ -41,7 +43,6 @@ export default {
                 console.log("歌单跳转");
                 this.$router.push({path:`song-list-album/${item.id}`});
             }
-            
             
         }
     }

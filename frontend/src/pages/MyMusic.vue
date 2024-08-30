@@ -29,7 +29,7 @@
 <script>
 import {mixin} from '../mixins';
 import {mapGetters} from 'vuex';
-import {getUserOfId,getCollectOfUserId,songOfSongId} from '../api/index';
+import {getUserOfId,getCollectOfUserId,songOfSongId,getCollectById} from '../api/index';
 import AlbumContent from "../components/AlbumContent";
 
 export default {
@@ -73,27 +73,29 @@ export default {
         },
         //获取我的收藏列表
         getCollection(userId){
-            // getCollectOfUserId(userId)
-            //     .then(res =>{
-            //             this.collection = res;
-            //             //通过歌曲id获取歌曲信息
-            //             for(let item of this.collection){
-            //                 this.getSongsOfIds(item.songId);
-            //             }
-            //         })
-            //     .catch(err => {
-            //         console.log(err);
-            //     })
+            getCollectById(userId)
+                .then(res =>{
+                        this.collection = res.data;
+                        //通过歌曲id获取歌曲信息
+                        for(let item of this.collection){
+                            this.getSongsOfIds(item.songId);
+                        }
+                        console.log(this.collectList);
+                        
+                    })
+                .catch(err => {
+                    console.log(err);
+                })
         },
         //通过歌曲id获取歌曲信息
         getSongsOfIds(id){
-            // songOfSongId(id)
-            //     .then(res =>{
-            //             this.collectList.push(res);
-            //         })
-            //     .catch(err => {
-            //         console.log(err);
-            //     })
+            songOfSongId(id)
+                .then(res =>{
+                        this.collectList.push(res.data[0]);
+                    })
+                .catch(err => {
+                    console.log(err);
+                })
         }
     }
 }

@@ -68,6 +68,9 @@ export const download = (url) => Axios({
   responseType: 'blob'
 })
 
+// 根据用户ID获取收藏列表
+export const getCollectById = (userId) => get(`/collection/detail?userId=${userId}`)
+
 //===========评价======================
 //提交评分
 export const setRank = (params) => post(`/rankList/add`, params)
