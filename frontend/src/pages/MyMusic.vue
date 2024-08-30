@@ -81,7 +81,7 @@ export default {
                             this.getSongsOfIds(item.songId);
                         }
                         console.log(this.collectList);
-                        
+
                     })
                 .catch(err => {
                     console.log(err);

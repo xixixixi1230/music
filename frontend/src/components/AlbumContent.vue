@@ -88,10 +88,10 @@ export default {
     let source=localStorage.getItem("contentList");
     console.log(source);
     if(source=="Singer") this.issinger=true;
-    
+
   },
   beforeDestroy() {
-    
+
     localStorage.removeItem("songListId");
   },
   props: ["songList"],

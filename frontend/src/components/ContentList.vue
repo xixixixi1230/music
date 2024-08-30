@@ -9,8 +9,8 @@
                             <use xlink:href="#icon-bofang"></use>
                         </svg>
                     </div>
-                </div> 
-                <p class="item-name">{{item.name||item.title}}</p>               
+                </div>
+                <p class="item-name">{{item.name||item.title}}</p>
             </li>
         </ul>
     </div>
@@ -25,10 +25,10 @@ export default {
         goAlbum(item){
             let content=localStorage.getItem('contentList');
             console.log(content);
-            
+
             if(content=="Home"){
                 console.log(content);
-                
+
                 console.log("ContentList",item.songListId);
                 localStorage.setItem('songListId', item.songListId);
                 this.$store.commit("setTempList",item);
@@ -43,7 +43,7 @@ export default {
                 console.log("歌单跳转");
                 this.$router.push({path:`song-list-album/${item.id}`});
             }
-            
+
         }
     }
 }

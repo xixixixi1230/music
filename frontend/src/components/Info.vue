@@ -1,5 +1,5 @@
 <template>
-<div > 
+<div >
     <div class="info">
         <div class="title">
             <span>编辑个人资料</span>
@@ -42,7 +42,7 @@
                 <div @click="goback(-1)">取消</div>
             </div>
         </div>
-        
+
     </div>
 </div>
 </template>
@@ -70,7 +70,7 @@ export default {
             },
             cities: [],            //所有的地区--省
             rules: {}               //表单提交的规则
-        }        
+        }
     },
     computed:{
         ...mapGetters([
@@ -84,7 +84,7 @@ export default {
     mounted(){
         this.getMsg(this.userId);
         console.log('用户id是'+this.userId);
-        
+
     },
     methods:{
         getMsg(userId){
@@ -100,7 +100,7 @@ export default {
             // console.log('userId:', userId);
             // getUserById(userId)
             //     .then(res =>{
-            //         console.log('getUserById 查询返回的内容:', res.data); 
+            //         console.log('getUserById 查询返回的内容:', res.data);
             //         this.registerForm.username = res.username;
             //         this.registerForm.password = res.password;
             //         this.registerForm.sex = res.sex;
@@ -109,7 +109,7 @@ export default {
             //         this.registerForm.birth = res.birth;
             //         this.registerForm.introduction = res.introduction;
             //         this.registerForm.location = res.location;
-                                
+
             //     })
             //     .catch(err => {
             //         console.log(err);
@@ -118,7 +118,7 @@ export default {
         saveMsg(){
             let _this = this;
             let d = new Date(this.registerForm.birth);
-            let datetime = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`; 
+            let datetime = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`;
             //let params = new URLSearchParams();
             let params={
                 id:this.registerForm.id,
@@ -134,7 +134,7 @@ export default {
             updateUserMsg(params)
                 .then(res => {
                     console.log('修改后',params);
-                    
+
                     if(res.code == 200){
                         _this.$store.commit('setUsername',this.registerForm.username);
                         _this.$store.commit('setPassword',this.registerForm.password);

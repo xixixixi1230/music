@@ -6,6 +6,7 @@
         <li v-for="(item,index) in listOfSongs" :key="index" :class="{'is-play': id==item.id}"
             @click="toplay(item.id,item.url,item.pic,item.index,item.name,item.lyric,item.isVip)">
           {{ replaceFName(item.name) }}
+          {{ (item.name) }}
         </li>
       </ul>
     </div>
@@ -37,15 +38,19 @@ export default {
     //获取名字前半部分--歌手名
     replaceLName (str) {
       let arr = str.split('-')
+      console.log("歌手名字"+arr[0])
       return arr[0]
     },
     //获取名字后半部分--歌名
     replaceFName (str) {
       let arr = str.split('-')
+      console.log("歌曲名字"+arr[1])
       return arr[1]
+
     },
     //播放
     toplay: function (id, url, pic, index, name, lyric, isVip) {
+      console.log('Clicked item name:', name);
       //判定需不需要vip资格  如果不需要,就直接播放
       if (!isVip) {
         this.play(id, url, pic, index, name, lyric)

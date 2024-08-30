@@ -1,5 +1,5 @@
-import {mapGetters} from 'vuex'
-import {likeSongOfName, getCollectOfUserId, addSongNums} from '../api/index'
+import { mapGetters } from 'vuex'
+import { likeSongOfName, getCollectOfUserId, addSongNums } from '../api/index'
 
 export const mixin = {
   computed: {
@@ -10,7 +10,7 @@ export const mixin = {
   },
   methods: {
     //提示信息
-    notify (title, type) {
+    notify(title, type) {
       this.$notify({
         title: title,
         type: type
@@ -18,11 +18,11 @@ export const mixin = {
     },
 
     //获取图片地址
-    attachImageUrl (srcUrl) {
+    attachImageUrl(srcUrl) {
       return srcUrl ? this.$store.state.configure.HOST + srcUrl : this.$store.state.configure.HOST + '/img/user.jpg'
     },
     //根据歌手名字模糊查询歌曲
-    getSong () {
+    getSong() {
       if (!this.$route.query.keywords) {
         this.$store.commit('setListOfSongs', [])
         this.notify('您输入的内容为空', 'warning')
@@ -51,7 +51,7 @@ export const mixin = {
     // },
     //播放
     toplay: function (id, url, pic, index, name, lyric, isVip) {
-      console.log("---------",isVip)
+      console.log("---------", isVip)
       if (!isVip) {
         console.log("============直接播放")
         this.play(id, url, pic, index, name, lyric)
@@ -65,9 +65,9 @@ export const mixin = {
         }
       }
     },
-    play (id, url, pic, index, name, lyric) {
+    play(id, url, pic, index, name, lyric) {
       addSongNums(id)
-      this.$store.commit('updPlayerStatus',true)
+      this.$store.commit('updPlayerStatus', true)
       this.$store.commit('setId', id)
       this.$store.commit('setUrl', this.$store.state.configure.HOST + url)
       this.$store.commit('setPicUrl', this.$store.state.configure.HOST + pic)
@@ -89,7 +89,7 @@ export const mixin = {
       }
     },
     //解析歌词
-    parseLyric (text) {
+    parseLyric(text) {
       let lines = text.split('\n')                   //将歌词按行分解成数组
       let pattern = /\[\d{2}:\d{2}.(\d{3}|\d{2})\]/g //时间格式的正则表达式
       let result = []                                //返回值
@@ -119,7 +119,7 @@ export const mixin = {
       return result
     },
     //获取生日
-    attachBirth (val) {
+    attachBirth(val) {
       if (val != null && val != '') {
         return val.substr(0, 10)
       }

@@ -53,7 +53,7 @@ export const getAllConsumer = () => get(`consumer/allConsumer`)
 //注册
 export const SignUp = (params) => post(`/user/add`, params)
 //登录
-export const loginIn = (params) => post(`/login`, params) 
+export const loginIn = (params) => post(`/login`, params)
 //根据用户id查询该用户的详细信息
 export const getUserOfId = (id) => get(`/consumer/selectByPrimaryKey?id=${id}`)
 export const getUserById = (userId) => get(`/user/detail?userId=${userId}`)
