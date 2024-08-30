@@ -7,6 +7,11 @@
         <result column="consumerId" property="consumerId" jdbcType="BIGINT" />
         <result column="score" property="score" jdbcType="INTEGER" />
     </resultMap>
+    <update id="update" parameterType="com.example.yin.model.domain.RankList">
+        UPDATE rank_list set
+                             score=#{score}
+        where consumer_id=#{consumerId} and song_list_id=#{songListId}
+    </update>
 
     <select id="selectScoreSum" resultType="java.lang.Integer">
         SELECT COALESCE(sum(score), 0) as score from rank_list where song_list_id = #{0} ;

@@ -11,6 +11,8 @@ public interface RankListService extends IService<RankList> {
 
     R addRank(RankListRequest rankListAddRequest);
 
+    R modifyRank(RankListRequest rankListAddRequest);
+
     R rankOfSongListId(Long songListId);
 
     R getUserRank(Long consumerId, Long songListId);
