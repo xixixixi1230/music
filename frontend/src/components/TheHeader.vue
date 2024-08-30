@@ -7,13 +7,13 @@
       <span>♥~MUSIC</span>
     </div>
     <ul class="navbar">
-      <li :class="{ active: item.name == activeName }" v-for="item in navMsg" :key="item.path"
-        @click="goPage(item.path, item.name)">
+      <li :class="{active: item.name == activeName}" v-for="item in navMsg" :key="item.path"
+          @click="goPage(item.path,item.name)">
         {{ item.name }}
       </li>
       <li>
         <div class="header-search">
-          <input type="text" placeholder="搜索音乐" @keyup.enter="goSearch()" v-model="keywords" />
+          <input type="text" placeholder="搜索音乐" @keyup.enter="goSearch()" v-model="keywords">
           <div class="search-btn" @click="goSearch()">
             <svg class="icon">
               <use xlink:href="#icon-sousuo"></use>
@@ -21,19 +21,17 @@
           </div>
         </div>
       </li>
-      <li v-show="!loginIn" :class="{ active: item.name == activeName }" v-for="item in loginMsg" :key="item.path"
-        @click="goPage(item.path, item.name)">
+      <li v-show="!loginIn" :class="{active: item.name == activeName}" v-for="item in loginMsg" :key="item.path"
+          @click="goPage(item.path,item.name)">
         {{ item.name }}
       </li>
     </ul>
     <div class="header-right" v-show="loginIn">
-      <div id="user">
-        <img :src="attachImageUrl(avator)" />
+      <div id='user'>
+        <img :src='attachImageUrl(avator)'>
       </div>
       <ul class="menu">
-        <li v-for="(item, index) in menuList" :key="index" @click="goMenuList(item.path)">
-          {{ item.name }}
-        </li>
+        <li v-for="(item,index) in menuList" :key="index" @click="goMenuList(item.path)">{{ item.name }}</li>
       </ul>
     </div>
   </div>
@@ -61,7 +59,7 @@ export default {
       'avator'
     ])
   },
-  created() {
+  created () {
     this.navMsg = navMsg
     this.loginMsg = loginMsg
     this.menuList = menuList
@@ -78,18 +76,19 @@ export default {
       document.querySelector('.menu').classList.remove('show')
     }, false)
   },
+
   methods: {
     //提示信息
-    notify(title, type) {
+    notify (title, type) {
       this.$notify({
         title: title,
         type: type
       })
     },
-    goHome() {
-      this.$router.push({ path: '/' })
+    goHome () {
+      this.$router.push({path: '/'})
     },
-    goPage(path, name) {
+    goPage (path, name) {
       if (!this.loginIn && path == '/my-music') {
         this.notify('请先登录', 'warning')
       } else {

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div > 
     <div class="info">
         <div class="title">
             <span>编辑个人资料</span>
@@ -10,8 +10,8 @@
                 <el-form-item prop="username" label="用户名">
                     <el-input v-model="registerForm.username" placeholder="用户名"></el-input>
                 </el-form-item>
-                <el-form-item prop="password" label="密码">
-                    <el-input type="password" v-model="registerForm.password" placeholder="密码"></el-input>
+                <el-form-item prop="password" label="新密码">
+                    <el-input type="password" v-model="registerForm.password" placeholder="请输入新密码"></el-input>
                 </el-form-item>
                 <el-form-item prop="sex" label="性别">
                     <el-radio-group v-model="registerForm.sex">
@@ -50,7 +50,7 @@
 import {mapGetters} from 'vuex'
 import {rules,cities} from '../assets/data/form'
 import {mixin} from '../mixins'
-import {getUserOfId,updateUserMsg} from '../api/index'
+import {getUserById,updateUserMsg} from '../api/index'
 
 export default {
     name: 'info',
@@ -58,6 +58,7 @@ export default {
     data() {
         return {
             registerForm: {
+                id:'',
                 username: '',       //用户名
                 password: '',       //密码
                 sex: '',            //性别
@@ -82,43 +83,66 @@ export default {
     },
     mounted(){
         this.getMsg(this.userId);
+        console.log('用户id是'+this.userId);
+        
     },
     methods:{
         getMsg(userId){
-            getUserOfId(userId)
-                .then(res =>{
-                    this.registerForm.username = res.username;
-                    this.registerForm.password = res.password;
-                    this.registerForm.sex = res.sex;
-                    this.registerForm.phoneNum = res.phoneNum;
-                    this.registerForm.email = res.email;
-                    this.registerForm.birth = res.birth;
-                    this.registerForm.introduction = res.introduction;
-                    this.registerForm.location = res.location;
+            this.registerForm.id=this.userId
+            this.registerForm.username=this.$store.getters.username;
+            this.registerForm.password=this.$store.getters.password;
+            this.registerForm.sex=this.$store.getters.sex;
+            this.registerForm.phoneNum=this.$store.getters.phoneNum;
+            this.registerForm.email=this.$store.getters.email;
+            this.registerForm.birth = this.$store.getters.birth;
+            this.registerForm.introduction = this.$store.getters.introduction;
+            this.registerForm.location = this.$store.getters.location;
+            // console.log('userId:', userId);
+            // getUserById(userId)
+            //     .then(res =>{
+            //         console.log('getUserById 查询返回的内容:', res.data); 
+            //         this.registerForm.username = res.username;
+            //         this.registerForm.password = res.password;
+            //         this.registerForm.sex = res.sex;
+            //         this.registerForm.phoneNum = res.phoneNum;
+            //         this.registerForm.email = res.email;
+            //         this.registerForm.birth = res.birth;
+            //         this.registerForm.introduction = res.introduction;
+            //         this.registerForm.location = res.location;
                                 
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+            //     })
+            //     .catch(err => {
+            //         console.log(err);
+            //     })
         },
         saveMsg(){
             let _this = this;
             let d = new Date(this.registerForm.birth);
-            let datetime = d.getFullYear() + '-' +(d.getMonth() + 1) +'-' + d.getDate();
-            let params = new URLSearchParams();
-            params.append('id',this.userId);
-            params.append('username',this.registerForm.username);
-            params.append('password',this.registerForm.password);
-            params.append('sex',this.registerForm.sex);
-            params.append('phoneNum',this.registerForm.phoneNum);
-            params.append('email',this.registerForm.email);
-            params.append('birth',datetime);
-            params.append('introduction',this.registerForm.introduction);
-            params.append('location',this.registerForm.location);
+            let datetime = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`; 
+            //let params = new URLSearchParams();
+            let params={
+                id:this.registerForm.id,
+                username:this.registerForm.username,
+                password:this.registerForm.password,
+                sex:this.registerForm.sex,
+                phoneNum:this.registerForm.phoneNum,
+                email:this.registerForm.email,
+                //birth:datetime,
+                introduction:this.registerForm.introduction,
+                location:this.registerForm.location
+            }
             updateUserMsg(params)
                 .then(res => {
-                    if(res.code == 1){
+                    console.log('修改后',params);
+                    
+                    if(res.code == 200){
                         _this.$store.commit('setUsername',this.registerForm.username);
+                        _this.$store.commit('setPassword',this.registerForm.password);
+                        _this.$store.commit('setSex',this.registerForm.sex);
+                        _this.$store.commit('setPhoneNum',this.registerForm.phoneNum);
+                        _this.$store.commit('setEmail',this.registerForm.email);
+                        _this.$store.commit('setIntroduction',this.registerForm.introduction);
+                        _this.$store.commit('setLocation',this.registerForm.location);
                         _this.notify('修改成功','success');
                         setTimeout(function(){
                             _this.$router.push({path: '/'});

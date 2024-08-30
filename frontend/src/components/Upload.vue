@@ -5,7 +5,7 @@
         <div class="section">
             <el-upload
                 drag
-                :action="uploadFile()"
+                :action="uploadAction"
                 :show-file-list="false"
                 :on-success="handleAvatorSuccess"
                 :before-upload="beforeAvatorUpload"
@@ -14,11 +14,11 @@
                 <div>
                     将文件拖到此处，或<span style="color:blue">修改头像</span>
                 </div>
-                <div slot="tip">只能上传jpg/png文件，且不能超过10MB</div>
+                <div slot="tip" style="margin-left: 50px;margin-top:10px;">只能上传jpg/png文件，且不能超过10MB</div>
             </el-upload>
             <!-- 预览当前头像 -->
-            <img :src="avator" alt="用户头像" v-if="avator" class="preview-img" />
-            <el-button @click="uploadFile">Upload</el-button>
+            <img :src="avator" alt="用户头像" v-if="avator" class="preview-img" style="margin-top: 20px;"/>
+            <el-button @click="uploadFile" style="margin-top: 5px;">Upload</el-button>
         </div>
     </div>
 </template>
@@ -29,6 +29,12 @@ import {updateUserAvator} from '../api/index'
 
 export default {
     name: 'upload',
+    props: {
+      uploadAction: {
+        type: String,
+        required: true
+      }
+    },
     data() {
       return {
         selectedFile: null, // 存储用户选择的文件
@@ -44,14 +50,17 @@ export default {
     methods:{
         uploadFile(){
           if (!this.selectedFile) {
-            alert('Please select a file to upload.');
+            // alert('Please select a file to upload.');
             return;
           }
           // 创建一个FormData对象并附加文件数据
           const formData = new FormData();
           formData.append('file', this.selectedFile); // "file"是请求的参数名
-
-          updateUserAvator(this.userId,formData)
+          let params={
+            id:this.userId,
+            file:formData
+          }
+          updateUserAvator(params)
             .then(res =>{
               console.log(res);
                 if(res.code == 200){

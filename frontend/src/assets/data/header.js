@@ -22,10 +22,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const navItems = document.querySelectorAll('.navbar li');
 
   navItems.forEach(item => {
-    item.addEventListener('click', function () {
-      // 先移除其他项目的font-enlarge类
-      navItems.forEach(i => i.classList.remove('font-enlarge'));
+    item.addEventListener('mouseenter', function () {
+      this.classList.add('hovered');
+    });
 
+    item.addEventListener('mouseleave', function () {
+      this.classList.remove('hovered');
+    });
+
+    item.addEventListener('click', function () {
+      // 移除其他项目的font-enlarge类
+      navItems.forEach(i => i.classList.remove('font-enlarge'));
+      
       // 为当前点击的项目添加font-enlarge类
       this.classList.add('font-enlarge');
     });

@@ -8,8 +8,10 @@ export const getAllSinger = () => get(`/singer`)
 export const getSingerOfSex = (sex) => get(`/singer/sex/detail?sex=${sex}`)
 
 //============歌曲相关================
+
 // 根据歌曲名字查询歌曲
 export const songOfName = (name) => get(`/song/name/detail?name=${name}`)
+
 //根据歌手id查询歌曲
 export const songOfSingerId = (id) => get(`/song/singerId/detail?singerId=${id}`)
 //根据歌曲id查询歌曲对象
@@ -51,12 +53,14 @@ export const getAllConsumer = () => get(`consumer/allConsumer`)
 //注册
 export const SignUp = (params) => post(`/user/add`, params)
 //登录
-export const loginIn = (params) => post(`/login`, params)
+export const loginIn = (params) => post(`/login`, params) 
 //根据用户id查询该用户的详细信息
-export const getUserOfId = (userId) => get(`/user/detail?userId=${userId}`)
+export const getUserOfId = (id) => get(`/consumer/selectByPrimaryKey?id=${id}`)
+export const getUserById = (userId) => get(`/user/detail?userId=${userId}`)
 //更新用户信息
 export const updateUserMsg = (params) => post(`/user/update`, params)
 //更新用户头像
+//export const updateUserAvator = (params) => post(`/user/avatar/update`, params)
 export const updateUserAvator = (params) => post(`/user/avatar/update`, params)
 //使用手机号码进行登录
 export const loginWithPhoneNum = (phoneNum) => post(`/consumer/${phoneNum}`)
