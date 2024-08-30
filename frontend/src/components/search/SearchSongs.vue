@@ -1,12 +1,15 @@
 <template>
     <div class="search-songs">
-       <album-content :songList="listOfSongs"></album-content>
+        <div class="songs-body">
+            <album-content :songList="listOfSongs"></album-content>
+        </div>
     </div>
 </template>
 <script>
 import {mapGetters} from "vuex";
 import {mixin} from "../../mixins";
 import AlbumContent from "../AlbumContent";
+import {songOfName} from '../../api/index.js'
 
 export default {
     name: 'search-songs',
@@ -19,9 +22,6 @@ export default {
             'listOfSongs'
         ])
     },
-    mounted() {
-        this.getSong();
-    }
 }
 </script>
 

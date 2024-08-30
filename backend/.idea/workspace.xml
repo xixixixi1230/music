@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="01b759cb-e02f-4fc0-910a-aa0545e767c3" name="Changes" comment="歌单，歌手，我的音乐背景和歌曲列表链接">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/ConsumerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/ConsumerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/SongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/SongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/ConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/ConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/SongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/SongService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/ConsumerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/ConsumerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SongServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/controller/ConsumerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/controller/ConsumerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/controller/SongController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/controller/SongController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/ConsumerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/ConsumerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/SongServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/SongServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/album-content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/album-content.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/my-music.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/my-music.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/song-list-album.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/song-list-album.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Comment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Comment.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/MyMusic.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/MyMusic.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/SongListAlbum.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/SongListAlbum.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="spring-beans.schema" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2lF3RVIuScZtDQWBIdEgA4FmtVT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.MusicServerApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/桌面/暑期实训项目/music/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.itangcent.idea.plugin.configurable.AccountConfigurable.apifox",
+    "ts.external.directory.path": "D:\\IntelliJ IDEA 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="backend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MusicServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="music-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.yin.MusicServerApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.yin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.MusicServerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-1.8.0_402-corretto-1.8.0_402-f644763e9732-af3fa2b8" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="01b759cb-e02f-4fc0-910a-aa0545e767c3" name="Changes" comment="" />
+      <created>1724761995092</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1724761995092</updated>
+      <workItem from="1724761996137" duration="1770000" />
+      <workItem from="1724833505237" duration="2176000" />
+      <workItem from="1724908258311" duration="1428000" />
+      <workItem from="1724910490948" duration="22061000" />
+      <workItem from="1724951048028" duration="53000" />
+      <workItem from="1724951163252" duration="7760000" />
+    </task>
+    <task id="LOCAL-00001" summary="收藏">
+      <option name="closed" value="true" />
+      <created>1724943887833</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724943887833</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="收藏" />
+    <MESSAGE value="修改评论" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改评论" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/backend$MusicServerApplication.ic" NAME="MusicServerApplication Coverage Results" MODIFIED="1724833782431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.yin.*</FILTER>
+    </SUITE>
+  </component>
+</project>

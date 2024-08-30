@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.yin.mapper.ListSongMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.yin.model.domain.ListSong">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="songId" column="song_id" jdbcType="INTEGER"/>
+        <result property="songListId" column="song_list_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, song_id, song_list_id
+    </sql>
+
+    <select id="selectAllListSongs" resultMap="BaseResultMap">
+        select * from list_song
+    </select>
+
+    <insert id="insert" parameterType="com.example.yin.model.domain.ListSong">
+        insert into list_song
+        <!-- 使用 trim 用于生成动态的 SQL 片段 -->
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <!-- 使用 if 标签进行条件判断 -->
+            <if test="id != null">
+                id,
+            </if>
+            <if test="songId != null">
+                song_id,
+            </if>
+            <if test="songListId != null">
+                song_list_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="songId != null">
+                #{songId},
+            </if>
+            <if test="songListId != null">
+                #{songListId},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from list_song where id=#{id}
+    </delete>
+
+    <delete id="deleteByBody" parameterType="com.example.yin.model.request.ListSongRequest">
+        delete from list_song where song_id=#{songId} and song_list_id=#{songListId}
+    </delete>
+</mapper>

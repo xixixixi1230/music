@@ -19,7 +19,7 @@
             </div>
             <div class="songs-body">
                 <album-content :songList="collectList">
-                    <template slot="title" class="collection">MY COLLECTION</template>
+                    <template slot="title">MY COLLECTION</template>
                 </album-content>
             </div>
         </div>
@@ -70,8 +70,6 @@ export default {
             this.introduction=this.$store.getters.introduction;
             console.log(this.avator);
             console.log(this.username);
-            console.log(this.userId);
-            
         },
         //获取我的收藏列表
         getCollection(userId){
