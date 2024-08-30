@@ -280,6 +280,8 @@ methods: {
       this.togglePlay() // 确保播放状态被设置为播放
     }
   },
+
+  
   // 播放音乐
   toplay (url) {
     if (url && url !== this.url) {
