@@ -33,6 +33,16 @@ public class RankListServiceImpl extends ServiceImpl<RankListMapper, RankList> i
             return R.error("评价失败");
         }
     }
+    @Override
+    public R modifyRank(RankListRequest rankListAddRequest) {
+        RankList rankList = new RankList();
+        BeanUtils.copyProperties(rankListAddRequest, rankList);
+        if (rankMapper.update(rankList) > 0) {
+            return R.success("修改成功");
+        } else {
+            return R.error("修改失败");
+        }
+    }
 
     @Override
     public R rankOfSongListId(Long songListId) {

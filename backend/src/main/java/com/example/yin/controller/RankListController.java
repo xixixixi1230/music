@@ -30,6 +30,13 @@ public class RankListController {
         return rankListService.addRank(rankListAddRequest);
     }
     /**
+     * 修改评分
+     */
+    @PostMapping("/rankList/modify")
+    public R modifyRank(@RequestBody RankListRequest rankListAddRequest) {
+        return rankListService.modifyRank(rankListAddRequest);
+    }
+    /**
      * 获取指定歌单的评分
      */
     @GetMapping("/rankList")
