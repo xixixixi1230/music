@@ -281,7 +281,7 @@ methods: {
     }
   },
 
-  
+
   // 播放音乐
   toplay (url) {
     if (url && url !== this.url) {
@@ -333,6 +333,8 @@ methods: {
     result.sort((a, b) => a[0] - b[0])
     return result
   },
+
+  
   // 页面
   toLyric() {
     if (this.$route.path === '/lyric') {
