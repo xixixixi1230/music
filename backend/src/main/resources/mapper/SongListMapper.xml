@@ -16,4 +16,49 @@
         id,title,pic,
         introduction,style
     </sql>
+
+    <insert id="insert" parameterType="com.example.yin.model.domain.SongList">
+        insert into song_list
+        <!-- 使用 trim 用于生成动态的 SQL 片段 -->
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <!-- 使用 if 标签进行条件判断 -->
+            <if test="id != null">
+                id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="pic != null">
+                pic,
+            </if>
+            <if test="introduction != null">
+                introduction,
+            </if>
+            <if test="style != null">
+                style,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <!-- 使用 if 标签进行条件判断 -->
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+            <if test="pic != null">
+                #{pic},
+            </if>
+            <if test="introduction != null">
+                #{introduction},
+            </if>
+            <if test="style != null">
+                #{style},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from song_list where id=#{id}
+    </delete>
 </mapper>

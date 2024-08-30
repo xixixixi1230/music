@@ -13,4 +13,8 @@ public interface SongListService extends IService<SongList> {
 
     R songListByStyle(String style);
     R getSongListById(Long id);
+
+    R songListAdd(SongList songList);
+
+    R songListDelete(Integer songListId);
 }

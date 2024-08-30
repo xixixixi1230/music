@@ -53,4 +53,23 @@ public class SongListServiceImpl extends ServiceImpl<SongListMapper, SongList> i
         return R.success(null, songList);
     }
 
+    @Override
+    public R songListAdd(SongList songList){
+        if(songListMapper.insert(songList)>0){
+            return R.success("添加歌单成功");
+        }
+        else{
+            return R.success("添加歌单失败");
+        }
+    }
+
+    @Override
+    public R songListDelete(Integer songListId){
+        if(songListMapper.delete(songListId)>0){
+            return R.success("删除歌单成功");
+        }
+        else{
+            return R.success("删除歌单失败");
+        }
+    }
 }

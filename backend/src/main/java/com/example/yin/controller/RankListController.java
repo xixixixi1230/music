@@ -26,6 +26,7 @@ public class RankListController {
      */
     @PostMapping("/rankList/add")
     public R addRank(@RequestBody RankListRequest rankListAddRequest) {
+        System.out.println(rankListAddRequest);
         return rankListService.addRank(rankListAddRequest);
     }
     /**
@@ -40,6 +41,7 @@ public class RankListController {
      */
     @GetMapping("/rankList")
     public R rankOfSongListId(@RequestParam Long songListId) {
+        System.out.println(songListId);
         return rankListService.rankOfSongListId(songListId);
     }
     /**
@@ -47,15 +49,14 @@ public class RankListController {
      */
     @GetMapping("/rankList/user")
     public R getUserRank(@RequestParam(required = false) Long consumerId, @RequestParam Long songListId) {
-        R userRank = rankListService.getUserRank(consumerId, songListId);
-        return R.success("成功",userRank);
+        return rankListService.getUserRank(consumerId, songListId);
     }
 
     /**
      * 前10排序
      */
     @GetMapping("/top10")
-    public List<Map<String, Object>> getTop10SongLists() {
+    public R getTop10SongLists() {
         // 获取所有歌单的 ID
         List<Long> songListIds = rankListService.getAllSongListIds();
 
@@ -92,7 +93,7 @@ public class RankListController {
                 .limit(10)
                 .collect(Collectors.toList());
 
-        return songListRanks;
+        return R.success(null,songListRanks);
     }
 
 }
