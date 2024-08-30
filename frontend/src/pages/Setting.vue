@@ -1,5 +1,5 @@
 <template>
-    <div class="setting">
+    <div class="setting" style="background-color: rgba(255,255,255,0.5);">
         <div class="leftCol">
             <div class="settingsMainHeader">设置</div>
             <ul class="setting-aside">
@@ -10,7 +10,8 @@
             </ul>
         </div>
         <div class="contentCol">
-            <component :is="componentSrc"></component>
+            <!-- <component :is="componentSrc"></component> -->
+            <component :is="componentSrc" :uploadAction="uploadAction"></component>
         </div>
     </div>
 </template>
@@ -31,7 +32,8 @@ export default {
                 {name: '修改头像',path: 'Upload'}
             ],
             activeName: '个人信息',
-            componentSrc: 'Info'
+            componentSrc: 'Info',
+            uploadAction: '/user/avatar/update'  // 设置上传的API路径
         }
     },
     methods:{
