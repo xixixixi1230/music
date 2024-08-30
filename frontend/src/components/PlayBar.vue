@@ -334,7 +334,7 @@ methods: {
     return result
   },
 
-  
+
   // 页面
   toLyric() {
     if (this.$route.path === '/lyric') {
@@ -344,6 +344,8 @@ methods: {
     }
   },
   // 下载音乐
+
+  
   download () {
     download(this.url)
       .then(res => {
