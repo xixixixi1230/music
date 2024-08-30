@@ -6,6 +6,7 @@ import com.example.yin.common.R;
 import com.example.yin.controller.MinioUploadController;
 import com.example.yin.mapper.ConsumerMapper;
 import com.example.yin.model.domain.Consumer;
+import com.example.yin.model.domain.SongList;
 import com.example.yin.model.request.ConsumerRequest;
 import com.example.yin.service.ConsumerService;
 import org.apache.commons.lang3.StringUtils;
@@ -151,4 +152,12 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer>
         }
     }
 
+    @Override
+    public R getUserById(Integer userId){
+        // 构建查询条件
+        QueryWrapper<Consumer> queryWrapper = new QueryWrapper<>();
+        // 构建包含条件
+        queryWrapper.eq("id",userId);
+        return R.success(null,consumerMapper.selectList(queryWrapper));
+    }
 }

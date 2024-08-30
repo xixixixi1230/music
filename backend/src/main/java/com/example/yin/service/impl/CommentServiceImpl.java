@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.yin.common.R;
 import com.example.yin.mapper.CommentMapper;
 import com.example.yin.model.domain.Comment;
+import com.example.yin.model.request.CommentLikeRequest;
 import com.example.yin.model.request.CommentRequest;
 import com.example.yin.service.CommentService;
 import org.springframework.beans.BeanUtils;
@@ -53,9 +54,9 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     }
 
     @Override
-    public R likeComment(Integer commentId) {
+    public R likeComment(CommentLikeRequest commentrequest) {
         // 查找评论
-        Comment comment = commentMapper.selectById(commentId);
+        Comment comment = commentMapper.selectById(commentrequest.getCommentId());
 
         // 判断评论是否存在
         if (comment == null) {

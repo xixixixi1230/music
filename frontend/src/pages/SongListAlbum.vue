@@ -53,6 +53,7 @@ import {
   getUserRank,
   songListRank,
   songOfSingerId,
+  modifyRank
 } from "../api/index";
 import AlbumContent from "../components/AlbumContent";
 import Comment from "../components/Comment";
@@ -69,9 +70,10 @@ export default {
       songLists: [], //当前页面需要展示的歌曲列表
       songListId: "", //前面传来的歌单id
       average: 0, //平均分
-      score:0,
+      score: 0,
       rank: 0, //提交评价的分数
-      isSinger:"",
+      isSinger: "",
+      isranked: "",
     };
   },
   computed: {
@@ -84,51 +86,51 @@ export default {
   },
   created() {
     let source = localStorage.getItem("contentList");
-    if(source=="Singer") this.isSinger=true;
+    if (source == "Singer") this.isSinger = true;
     this.songListId = this.$route.params.id;
     this.getSongId();
     this.getRank(this.songListId);
-    console.log("aonglistalbu7m",this.songListId);
+    console.log("aonglistalbu7m", this.songListId);
     this.getOldRank();
   },
   methods: {
-    getOldRank(){
-      if(!this.isSinger){
-      getUserRank(this.songListId,this.userId)
-      .then(res=>{
-        this.rank=res.data/2;
-        console.log(this.rank);
-        
-      })
-    }
+    getOldRank() {
+      if (!this.isSinger) {
+        getUserRank(this.songListId, this.userId).then((res) => {
+          this.rank = res.data / 2;
+          console.log(this.rank);
+          if (res.data == 0) this.isranked = false;
+          else this.isranked=true;
+        });
+      }
     },
     //获取当前歌单的歌曲列表
     getSongId() {
       // 歌手
-      if(this.isSinger){
-        songOfSingerId(this.songListId) 
-        .then((res) => {
-          console.log("singer",res);
-          this.songLists=res.data;
-          this.$store.commit("setListOfSongs", this.songLists);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (this.isSinger) {
+        songOfSingerId(this.songListId)
+          .then((res) => {
+            console.log("singer", res);
+            this.songLists = res.data;
+            this.$store.commit("setListOfSongs", this.songLists);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
       // 歌单
-      else{
+      else {
         listSongDetail(this.songListId)
-        .then((res) => {
-          console.log(res);
-          for (let item of res.data) {
-            this.getSongList(item.songId);
-          }
-          this.$store.commit("setListOfSongs", this.songLists);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          .then((res) => {
+            console.log(res);
+            for (let item of res.data) {
+              this.getSongList(item.songId);
+            }
+            this.$store.commit("setListOfSongs", this.songLists);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     },
     //根据歌曲id获取歌曲信息
@@ -147,9 +149,9 @@ export default {
     getRank(id) {
       getSongListScore(id)
         .then((res) => {
-          console.log(id,res);
+          console.log(id, res);
           this.score = res.data;
-          this.average=res.data/2;
+          this.average = res.data / 2;
         })
         .catch((err) => {
           console.log(err);
@@ -159,22 +161,38 @@ export default {
     setRank() {
       if (this.loginIn) {
         let params = {
-          "songListId":this.songListId,
-          "consumerId":this.userId,
-          "score":this.rank * 2
+          songListId: this.songListId,
+          consumerId: this.userId,
+          score: this.rank * 2,
+        };
+        if (this.isranked) {
+          modifyRank(params)
+            .then((res) => {
+              if (res.code == 200) {
+                this.notify("修改评分成功", "success");
+                this.getRank(this.songListId);
+              } else {
+                this.notify("修改评分失败", "error");
+              }
+            })
+            .catch((err) => {
+              this.notify("出现错误", "error");
+            });
         }
-        songListRank(params)
-          .then((res) => {
-            if (res.code == 200) {
-              this.notify("评分成功", "success");
-              this.getRank(this.songListId);
-            } else {
-              this.notify("评分失败", "error");
-            }
-          })
-          .catch((err) => {
-            this.notify("您已经评价过啦", "error");
-          });
+        else {
+          songListRank(params)
+            .then((res) => {
+              if (res.code == 200) {
+                this.notify("评分成功", "success");
+                this.getRank(this.songListId);
+              } else {
+                this.notify("评分失败", "error");
+              }
+            })
+            .catch((err) => {
+              this.notify("出现错误", "error");
+            });
+        }
       } else {
         this.rank = null;
         this.notify("请先登录", "warning");

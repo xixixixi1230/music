@@ -19,7 +19,7 @@
             </div>
             <div class="songs-body">
                 <album-content :songList="collectList">
-                    <template slot="title" class="collection">MY COLLECTION</template>
+                    <template slot="title">MY COLLECTION</template>
                 </album-content>
             </div>
         </div>

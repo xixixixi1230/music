@@ -4,7 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01b759cb-e02f-4fc0-910a-aa0545e767c3" name="Changes" comment="修改评论" />
+    <list default="true" id="01b759cb-e02f-4fc0-910a-aa0545e767c3" name="Changes" comment="歌单，歌手，我的音乐背景和歌曲列表链接">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/ConsumerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/ConsumerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/SongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/SongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/ConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/ConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/SongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/SongService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/ConsumerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/ConsumerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SongServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/controller/ConsumerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/controller/ConsumerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/controller/SongController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/controller/SongController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/ConsumerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/ConsumerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/SongServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/SongServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/album-content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/album-content.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/my-music.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/my-music.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/song-list-album.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/song-list-album.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Comment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Comment.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/MyMusic.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/MyMusic.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/SongListAlbum.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/SongListAlbum.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +39,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,6 +69,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.MusicServerApplication.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/桌面/暑期实训项目/music/backend",
     "node.js.detected.package.eslint": "true",

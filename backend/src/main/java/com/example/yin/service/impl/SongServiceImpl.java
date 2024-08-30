@@ -55,4 +55,13 @@ public class SongServiceImpl extends ServiceImpl<SongMapper, Song> implements So
         queryWrapper.like("singer_name",singerName);
         return R.success(null, songMapper.selectList(queryWrapper));
     }
+
+    @Override
+    public R songByName(String name){
+        // 构建查询条件
+        QueryWrapper<Song> queryWrapper = new QueryWrapper<>();
+        // 构建包含条件
+        queryWrapper.like("name",name);
+        return R.success(null, songMapper.selectList(queryWrapper));
+    }
 }

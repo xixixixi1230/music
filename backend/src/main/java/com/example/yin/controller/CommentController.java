@@ -1,6 +1,7 @@
 package com.example.yin.controller;
 
 import com.example.yin.common.R;
+import com.example.yin.model.request.CommentLikeRequest;
 import com.example.yin.model.request.CommentRequest;
 import com.example.yin.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +48,11 @@ public class CommentController {
      * 点赞
      */
 
-    @PostMapping("/comment/like/{commentId}")
-    public R commentOfLike(@PathVariable Integer commentId) {
+    @PostMapping("/comment/like")
+    public R commentOfLike(@RequestBody CommentLikeRequest commentrequest) {
+        System.out.println(commentrequest);
         // 调用服务层方法进行点赞操作
-        return commentService.likeComment(commentId);
+        return commentService.likeComment(commentrequest);
     }
 
 

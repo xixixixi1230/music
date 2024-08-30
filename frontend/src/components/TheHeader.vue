@@ -7,13 +7,13 @@
       <span>♥~MUSIC</span>
     </div>
     <ul class="navbar">
-      <li :class="{active: item.name == activeName}" v-for="item in navMsg" :key="item.path"
-          @click="goPage(item.path,item.name)">
+      <li :class="{ active: item.name == activeName }" v-for="item in navMsg" :key="item.path"
+        @click="goPage(item.path, item.name)">
         {{ item.name }}
       </li>
       <li>
         <div class="header-search">
-          <input type="text" placeholder="搜索音乐" @keyup.enter="goSearch()" v-model="keywords">
+          <input type="text" placeholder="搜索音乐" @keyup.enter="goSearch()" v-model="keywords" />
           <div class="search-btn" @click="goSearch()">
             <svg class="icon">
               <use xlink:href="#icon-sousuo"></use>
@@ -21,30 +21,32 @@
           </div>
         </div>
       </li>
-      <li v-show="!loginIn" :class="{active: item.name == activeName}" v-for="item in loginMsg" :key="item.path"
-          @click="goPage(item.path,item.name)">
+      <li v-show="!loginIn" :class="{ active: item.name == activeName }" v-for="item in loginMsg" :key="item.path"
+        @click="goPage(item.path, item.name)">
         {{ item.name }}
       </li>
     </ul>
     <div class="header-right" v-show="loginIn">
-      <div id='user'>
-        <img :src='attachImageUrl(avator)'>
+      <div id="user">
+        <img :src="attachImageUrl(avator)" />
       </div>
       <ul class="menu">
-        <li v-for="(item,index) in menuList" :key="index" @click="goMenuList(item.path)">{{ item.name }}</li>
+        <li v-for="(item, index) in menuList" :key="index" @click="goMenuList(item.path)">
+          {{ item.name }}
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-import {navMsg, loginMsg, menuList} from '../assets/data/header'
-import {logout} from '../api/index'
+import { mapGetters } from 'vuex'
+import { navMsg, loginMsg, menuList } from '../assets/data/header'
+import { logout,songOfName,getSongListOfLikeTitle } from '../api/index'
 
 export default {
   name: 'the-header',
-  data () {
+  data() {
     return {
       navMsg: [],    //左侧导航栏
       keywords: '',  //搜索关键字
@@ -59,12 +61,12 @@ export default {
       'avator'
     ])
   },
-  created () {
+  created() {
     this.navMsg = navMsg
     this.loginMsg = loginMsg
     this.menuList = menuList
   },
-  mounted () {
+  mounted() {
     document.querySelector('#user').addEventListener('click', function (e) {
       document.querySelector('.menu').classList.add('show')
       e.stopPropagation()           //关键在于阻止冒泡
@@ -76,34 +78,46 @@ export default {
       document.querySelector('.menu').classList.remove('show')
     }, false)
   },
-
   methods: {
     //提示信息
-    notify (title, type) {
+    notify(title, type) {
       this.$notify({
         title: title,
         type: type
       })
     },
-    goHome () {
-      this.$router.push({path: '/'})
+    goHome() {
+      this.$router.push({ path: '/' })
     },
-    goPage (path, name) {
+    goPage(path, name) {
       if (!this.loginIn && path == '/my-music') {
         this.notify('请先登录', 'warning')
       } else {
         this.$store.commit('setActiveName', name)
-        this.$router.push({path: path})
+        this.$router.push({ path: path })
       }
     },
-    goSearch () {
-      this.$router.push({path: '/search', query: {keywords: this.keywords}})
+    goSearch() {
+      localStorage.setItem('contentList', 'Search');
+      let _this = this
+      console.log(this.keywords);
+      songOfName(this.keywords)
+      .then(res=>{
+        _this.$store.commit("setListOfSongs",res.data);
+        console.log(res.data);
+      })
+      getSongListOfLikeTitle(this.keywords)
+      .then(res=>{
+        _this.$store.commit("setSongLists",res.data);
+        console.log(res.data);
+      })
+      this.$router.push({ path: '/search', query: { keywords: this.keywords } })
     },
     //获取图片地址
-    attachImageUrl (srcUrl) {
+    attachImageUrl(srcUrl) {
       return srcUrl ? this.$store.state.configure.HOST + srcUrl : '../assets/img/user.jpg'
     },
-    goMenuList (path) {
+    goMenuList(path) {
       console.log('===>>>点击', path)
       if (path === 0) {
         //向后台发送 退出登录的请求
@@ -115,14 +129,13 @@ export default {
         this.$store.commit('setIsActive', false)
         this.$router.go(0)
       } else {
-        this.$router.push({path: path})
+        this.$router.push({ path: path })
       }
     }
   }
-
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/css/the-header.scss';
+@import "../assets/css/the-header.scss";
 </style>

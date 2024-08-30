@@ -1,12 +1,13 @@
 <template>
     <div class="search-song-Lists">
-       <content-list :contentList="albumDatas"></content-list>
+       <content-list :contentList="songLists"></content-list>
     </div>
 </template>
 <script>
 import ContentList from '../ContentList';
 import {getSongListOfLikeTitle} from '../../api/index';
 import {mixin} from "../../mixins";
+import {mapGetters} from "vuex";
 
 export default {
     name: 'search-song-lists',
@@ -18,8 +19,16 @@ export default {
             albumDatas: []
         }
     },
+    computed:{
+        ...mapGetters([
+            'songLists'
+        ])
+    },
     mounted(){
+        console.log(111111111);
+        
         this.getSearchList();
+        console.log(this.$route.query.keywords);
     },
     methods:{
         getSearchList(){
@@ -28,8 +37,9 @@ export default {
             }else{
                 getSongListOfLikeTitle(this.$route.query.keywords)
                     .then(res =>{
+                        console.log(res);
                         if(res){
-                            this.albumDatas = res
+                            this.albumDatas = res.data
                         }else{
                             this.notify('暂无该歌曲内容','warning')
                         }
