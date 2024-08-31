@@ -1,6 +1,6 @@
 <template>
     <div class="setting" style="background-color: rgba(255,255,255,0.5);">
-        <div class="leftCol">
+        <!-- <div class="leftCol">
             <div class="settingsMainHeader">设置</div>
             <ul class="setting-aside">
                 <li v-for="(item,index) in settingList" :key="index" :class="{activeColor: activeName==item.name}"
@@ -8,7 +8,7 @@
                     {{item.name}}
                 </li>
             </ul>
-        </div>
+        </div> -->
         <div class="contentCol">
             <!-- <component :is="componentSrc"></component> -->
             <component :is="componentSrc" :uploadAction="uploadAction"></component>

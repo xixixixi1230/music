@@ -26,7 +26,7 @@
       </div>
       <!-- 歌曲图片 -->
       <div class="item-img" @click="toLyric">
-        <img :src="picUrl"/>
+        <img :src="picUrl" :class="imgClass"/>
       </div>
       <!-- 播放进度 -->
       <div class="playing-speed">
@@ -119,7 +119,17 @@ export default {
       'userId',               //当前登录用户的id
       'isActive',             //当前播放的歌曲是否已收藏
       'playerStatus'
-    ])
+    ]),
+    //添加图片随音乐播放旋转效果
+    // rotation(){
+    //   return this.isPlay ? 'rotate(360deg)' : 'rotate(0deg)';
+    // },
+    imgClass() {
+    return {
+      rotating: this.isPlay,
+      paused: !this.isPlay
+    };
+  }
   },
   watch: {
   //   resetProgress() {
@@ -430,7 +440,6 @@ methods: {
             this.notify('操作失败', 'error');
           });
         }
-
       } else {
         this.notify('请登录后再收藏', 'warning');
       }

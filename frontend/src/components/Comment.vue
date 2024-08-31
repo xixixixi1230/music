@@ -166,7 +166,7 @@ export default {
           this.userName.push(res.data[0].username);
         })
         .catch((err) => {
-          this.notify("出错了", "error");
+          //this.notify("出错了", "error");
         });
     },
     //给某一个评论点赞
