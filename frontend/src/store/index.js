@@ -7,11 +7,31 @@ import song from './song'
 
 Vue.use(Vuex)
 
+const state = {
+  lyric: [],
+  // other state properties
+};
+
+const mutations = {
+  setLyric(state, lyric) {
+    state.lyric = lyric;
+  },
+  // other mutations
+};
+
+const getters = {
+  lyric: state => state.lyric,
+  // other getters
+};
+
 const store = new Vuex.Store({
   modules: {
     configure,
     user,
-    song
+    song,
+    state,
+    mutations,
+    getters
   }
 })
 

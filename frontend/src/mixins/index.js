@@ -50,30 +50,30 @@ export const mixin = {
     //   return arr[1]
     // },
     //播放
-    toplay: function (id, url, pic, index, name, lyric, isVip) {
-      console.log("---------", isVip)
+    toplay: function (id, url, pic, index, name, singerName, lyric, isVip) {
+      console.log("---------", lyric)
       if (!isVip) {
         console.log("============直接播放")
-        this.play(id, url, pic, index, name, lyric)
+        this.play(id, url, pic, index, name, singerName, lyric)
       } else {
         //需要vip资格才能播放, 读取store中的 isVip信息
         const canPlay = this.$store.getters.isVip
         if (canPlay) {
-          this.play(id, url, pic, index, name, lyric)
+          this.play(id, url, pic, index, name, singerName, lyric)
         } else {
           this.$message.error('你还不是VIP,不能播放这首歌')
         }
       }
     },
-    play(id, url, pic, index, name, lyric) {
-      addSongNums(id)
+    play(id, url, pic, index, name, singerName, lyric) {
+      // addSongNums(id)
       this.$store.commit('updPlayerStatus', true)
       this.$store.commit('setId', id)
       this.$store.commit('setUrl', this.$store.state.configure.HOST + url)
       this.$store.commit('setPicUrl', this.$store.state.configure.HOST + pic)
       this.$store.commit('setListIndex', index)
-      this.$store.commit('setTitle', this.replaceFName(name))
-      this.$store.commit('setArtist', this.replaceLName(name))
+      this.$store.commit('setTitle', name)
+      this.$store.commit('setArtist', singerName)
       this.$store.commit('setLyric', this.parseLyric(lyric))
       this.$store.commit('setIsActive', false)
       if (this.loginIn) {
@@ -89,7 +89,9 @@ export const mixin = {
       }
     },
     //解析歌词
-    parseLyric(text) {
+    parseLyric(lyric) {
+      console.log("歌词："+lyric)
+      let text = lyric
       let lines = text.split('\n')                   //将歌词按行分解成数组
       let pattern = /\[\d{2}:\d{2}.(\d{3}|\d{2})\]/g //时间格式的正则表达式
       let result = []                                //返回值

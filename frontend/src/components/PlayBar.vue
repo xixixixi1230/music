@@ -290,7 +290,9 @@ methods: {
       this.$store.commit('setPicUrl', this.$store.state.configure.HOST + this.listOfSongs[this.listIndex].pic)
       this.$store.commit('setTitle', this.replaceFName(this.listOfSongs[this.listIndex].name))
       this.$store.commit('setArtist', this.replaceLName(this.listOfSongs[this.listIndex].name))
-      this.$store.commit('setLyric', this.parseLyric(this.listOfSongs[this.listIndex].lyric))
+      //this.$store.commit('setLyric', this.parseLyric(this.listOfSongs[this.listIndex].lyric))
+      this.$store.commit('setLyric', lyric);
+      window.sessionStorage.setItem('lyric', JSON.stringify(lyric));
       this.$store.commit('setIsActive', false)
       if (this.loginIn) {
         getCollectOfUserId(this.userId)
@@ -305,18 +307,10 @@ methods: {
       }
     }
   },
-  // // 获取名字前半部分--歌手名
-  // replaceLName (str) {
-  //   let arr = str.split('-')
-  //   return arr[0]
-  // },
-  // // 获取名字后半部分--歌名
-  // replaceFName (str) {
-  //   let arr = str.split('-')
-  //   return arr[1]
-  // },
   // 解析歌词
-  parseLyric (text) {
+  parseLyric (lyric) {
+    console.log("播放条测试："+lyric)
+    let text = lyric
     let lines = text.split('\n')
     let pattern = /\[\d{2}:\d{2}.(\d{3}|\d{2})\]/g
     let result = []
@@ -375,6 +369,7 @@ methods: {
           'type': this.type,
           'songId':this.songId,
         }
+        console.log("前端参数信息"+this.type,this.userId,this.songId)
         setCollect(params)
           .then(res => {
             if (res.code === 200) {
