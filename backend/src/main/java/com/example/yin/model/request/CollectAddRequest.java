@@ -5,16 +5,8 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class CollectRequest {
-    private Integer id;
-
+public class CollectAddRequest {
     private Integer userId;
-
-    private Byte type;
-
     private Integer songId;
-
-    private Integer songListId;
-
-    private Date createTime;
+//    private Date createTime;
 }

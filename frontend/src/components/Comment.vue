@@ -46,7 +46,7 @@
 <script>
 import { mixin } from "../mixins";
 import { mapGetters } from "vuex";
-import { setComment, setLike, getAllComment, getUserOfId } from "../api/index";
+import { setComment, setLike, getAllComment, getUserById } from "../api/index";
 
 export default {
   name: "comment",
@@ -129,7 +129,7 @@ export default {
             this.getUsers(item.userId);
           }
           console.log(this.commentList);
-          
+
         })
         .catch((err) => {
           this.notify("评论加载失败", "error");
@@ -137,7 +137,7 @@ export default {
     },
     //获取用户的头像和昵称
     getUsers(id) {
-      getUserOfId(id)
+      getUserById(id)
         .then((res) => {
           this.userPic.push(res.data[0].avator);
           this.userName.push(res.data[0].username);
@@ -156,14 +156,14 @@ export default {
     //         "up":up+1
     //     }
     //     console.log(params);
-        
+
     //     // params.append("id", id);
     //     // params.append("up", up + 1);
     //     setLike(params)
     //       .then((res) => {
     //         if (res.code == 200) {
     //             console.log(res);
-                
+
     //           this.$refs.up[index].children[0].style.color = "#2796cd";
     //           this.getComment();
     //         } else {

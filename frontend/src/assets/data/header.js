@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     item.addEventListener('click', function () {
       // 移除其他项目的font-enlarge类
       navItems.forEach(i => i.classList.remove('font-enlarge'));
-      
+
       // 为当前点击的项目添加font-enlarge类
       this.classList.add('font-enlarge');
     });

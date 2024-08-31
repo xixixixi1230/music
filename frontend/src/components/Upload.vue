@@ -3,14 +3,39 @@
     <p class="title">修改头像</p>
     <hr />
     <div class="section">
-      <el-upload action="http://localhost:8080/" list-type="picture-card" :auto-upload="false" :on-change="handleChange"
-        :show-file-list="false">
+      <el-upload
+        action="http://localhost:8080/"
+        list-type="picture-card"
+        :auto-upload="false"
+        :on-change="handleChange"
+        :show-file-list="false"
+      >
         <i class="el-icon-plus"></i>
       </el-upload>
       <div v-if="imageUrl">
-        <img :src="imageUrl" alt="Uploaded Image" style="width: 100px; height: 100px;" />
+        <img
+          :src="imageUrl"
+          alt="Uploaded Image"
+          style="width: 100px; height: 100px;"
+        />
       </div>
       <button @click="uploadFile">上传</button>
+      <!-- <el-upload
+                drag
+                :action="uploadFile()"
+                :show-file-list="false"
+                :on-success="handleAvatorSuccess"
+                :before-upload="beforeAvatorUpload"
+                >
+                <i class="el-icon-upload"></i>
+                <div>
+                    将文件拖到此处，或<span style="color:blue">修改头像</span>
+                </div>
+                <div slot="tip">只能上传jpg/png文件，且不能超过10MB</div>
+            </el-upload>
+            <!-- 预览当前头像 -->
+      <!-- <img :src="avator" alt="用户头像" v-if="avator" class="preview-img" />
+            <el-button @click="uploadFile">Upload</el-button> -->
     </div>
   </div>
 </template>
@@ -57,23 +82,27 @@ export default {
     },
     uploadFile() {
       if (!this.selectedFile) {
-        //this.$message.error("请先选择文件！");
+        this.$message.error("请先选择文件！");
         return;
       }
       console.log("upload");
-      //   创建 FormData 对象
-      const formData = new FormData();
-      formData.append("file", this.selectedFile);
-      console.log(formData);
-      console.log(this.userId, this.selectedFile);
+      
 
-      let params = {
-        "file": this.selectedFile,
-        "id": this.userId
-      }
+    //   创建 FormData 对象
+        const formData = new FormData();
+        formData.append("file", this.selectedFile);
+        console.log(formData);
+        console.log(this.userId, this.selectedFile);
 
-      let id = this.userId
+        let params={
+            "file":this.selectedFile,
+            "id":this.userId
+        }
 
+        let id=this.userId
+    //   const formData = new FormData();
+    //   formData.append("file", this.selectedFile);
+    //   formData.append("userId", this.userId);
       axios
         .post(`http://localhost:8080/user/avatar/update?id=${id}`, formData, {
           headers: {

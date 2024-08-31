@@ -131,37 +131,6 @@ export default {
   }
 }
 </script>
-<!--
-<style lang="scss" scoped>
-@import '../assets/css/sign-up.scss';
-
-.login-tab {
-  width: 100%;
-  height: 100%;
-
-  .qrcode-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  .fresh-qrcode {
-    color: #fff;
-    margin: 20px 25px;
-    padding: 15px;
-    font-size: 16px
-  }
-
-  /*刷新二维码的中间状态*/
-  .fresh-qrcode-status {
-    width: 200px;
-    height: 200px;
-  }
-}
-
-</style>-->
-
 
 <style scoped>
 .login-wrap {

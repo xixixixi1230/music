@@ -53,7 +53,7 @@ export const getAllConsumer = () => get(`consumer/allConsumer`)
 //注册
 export const SignUp = (params) => post(`/user/add`, params)
 //登录
-export const loginIn = (params) => post(`/login`, params) 
+export const loginIn = (params) => post(`/login`, params)
 //根据用户id查询该用户的详细信息
 export const getUserOfId = (id) => get(`/consumer/selectByPrimaryKey?id=${id}`)
 export const getUserById = (userId) => get(`/user/detail?userId=${userId}`)
@@ -74,8 +74,7 @@ export const download = (url) => Axios({
   responseType: 'blob'
 })
 
-// 根据用户ID获取收藏列表
-export const getCollectById = (userId) => get(`/collection/detail?userId=${userId}`)
+
 
 //===========评价======================
 //提交评分
@@ -101,6 +100,10 @@ export const getAllComment = (type, id) => {
 
 //===============收藏===================
 //新增收藏
-export const setCollect = (params) => post(`/collect/add`, params)
-//指定用户的收藏列表
-export const getCollectOfUserId = (userId) => get(`/collect/collectOfUserId?userId=${userId}`)
+export const setCollect = (params) => post(`/collection/add`, params)
+// 根据用户ID获取收藏列表
+export const getCollectById = (userId) => get(`/collection/detail?userId=${userId}`)
+// 删除收藏
+export const deleteCollect = (params) => post(`/collection/delete`, params)
+// 判断该用户是否收藏该歌曲
+export const isCollect = (params) => post('/collection/status',params)

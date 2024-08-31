@@ -83,7 +83,7 @@
 </template>
 <script>
 import {mapGetters} from 'vuex'
-import {download, setCollect, getCollectOfUserId} from '../api/index'
+import {download, setCollect,isCollect,deleteCollect} from '../api/index'
 
 export default {
   name: 'play-bar',
@@ -97,8 +97,7 @@ export default {
       tag: false,             //拖拽开始结束的标志，当开始拖拽，它的值才会变成true
       volume: 50,             //音量，默认一半
       toggle: true ,        //显示隐藏播放器页面
-      isActive:false,         //初始未收藏
-      //isPlay:false          //初始图片不旋转
+      // isActive:localStorage.getItem('isActive')         //初始未收藏
     }
   },
   computed: {
@@ -274,8 +273,8 @@ methods: {
         this.$store.commit('setListIndex', this.listOfSongs.length - 1)
       }
       this.toplay(this.listOfSongs[this.listIndex].url)
-      this.resetProgress()
-      this.togglePlay() // 确保播放状态被设置为播放
+      this.resetProgress() // 重置进度条和当前时间
+      this.$store.commit('setIsPlay', true) // 确保播放状态被设置为播放
     }
   },
   // 下一首
@@ -287,32 +286,45 @@ methods: {
         this.$store.commit('setListIndex', 0)
       }
       this.toplay(this.listOfSongs[this.listIndex].url)
-      this.resetProgress()
-      this.togglePlay() // 确保播放状态被设置为播放
+      this.resetProgress() // 重置进度条和当前时间
+      this.$store.commit('setIsPlay', true) // 确保播放状态被设置为播放
     }
   },
 
 
   // 播放音乐
   toplay (url) {
+    console.log("播放音乐");
+
     if (url && url !== this.url) {
+      console.log("====================");
       this.$store.commit('setId', this.listOfSongs[this.listIndex].id)
       this.$store.commit('setUrl', this.$store.state.configure.HOST + url)
       this.$store.commit('setPicUrl', this.$store.state.configure.HOST + this.listOfSongs[this.listIndex].pic)
-      this.$store.commit('setTitle', this.replaceFName(this.listOfSongs[this.listIndex].name))
-      this.$store.commit('setArtist', this.replaceLName(this.listOfSongs[this.listIndex].name))
-      this.$store.commit('setLyric', this.parseLyric(this.listOfSongs[this.listIndex].lyric))
+      this.$store.commit('setTitle', this.listOfSongs[this.listIndex].name)
+      this.$store.commit('setArtist', this.listOfSongs[this.listIndex].singerName)
+      //this.$store.commit('setLyric', this.parseLyric(this.listOfSongs[this.listIndex].lyric))
+      this.$store.commit('setLyric', lyric);
+      window.sessionStorage.setItem('lyric', JSON.stringify(lyric));
       this.$store.commit('setIsActive', false)
       if (this.loginIn) {
-        getCollectOfUserId(this.userId)
-          .then(res => {
-            for (let item of res) {
-              if (item.songId == this.id) {
-                this.$store.commit('setIsActive', true)
-                break
-              }
-            }
-          })
+        let userId=this.$store.getters.userId;
+        let songId=this.$store.getters.id
+        let params={
+          'userId': userId,
+          'songId':songId,
+        }
+        isCollect(params)
+        .then(res=>{
+          if(res.data){
+            this.$store.commit('setIsActive', true)
+          }
+          else{
+            console.log("为收藏");
+
+            this.$store.commit('setIsActive', false)
+          }
+        })
       }
     }
   },
@@ -327,7 +339,9 @@ methods: {
   //   return arr[1]
   // },
   // 解析歌词
-  parseLyric (text) {
+  parseLyric (lyric) {
+    console.log("播放条测试："+lyric)
+    let text = lyric
     let lines = text.split('\n')
     let pattern = /\[\d{2}:\d{2}.(\d{3}|\d{2})\]/g
     let result = []
@@ -377,28 +391,42 @@ methods: {
   // 收藏
   collection() {
       if (this.loginIn) {
-        // const params = new URLSearchParams();
-        // params.append('userId', this.userId);
-        // params.append('type', 0);
-        // params.append('songId', this.id);
+        let userId=this.$store.getters.userId;
+        let songId=this.$store.getters.id
         let params={
-          'userId': this.userId,
-          'type': this.type,
-          'songId':this.songId,
+          'userId': userId,
+          'songId':songId,
         }
-        setCollect(params)
+        console.log(params);
+        if(this.isActive){
+          deleteCollect(params)
           .then(res => {
             if (res.code === 200) {
-              this.isActive = !this.isActive; // 切换图标状态
-              this.$store.commit('setIsActive', this.isActive); // 更新 Vuex 状态
-              this.notify('收藏成功', 'success');
-            } else if (res.code === 2) {
-              this.notify('已收藏', 'warning');
+              this.$store.commit('setIsActive', false);
+              // this.isActive = !this.isActive; // 切换图标状态
+              console.log(this.isActive);
+              // this.$store.commit('setIsActive', this.isActive); // 更新 Vuex 状态
+              this.notify('取消收藏成功', 'success');
             }
           })
           .catch(() => {
             this.notify('操作失败', 'error');
           });
+        }
+        else{
+          setCollect(params)
+          .then(res => {
+            if (res.code === 200) {
+              // this.isActive = !this.isActive; // 切换图标状态
+              console.log(this.isActive);
+              this.$store.commit('setIsActive', true); // 更新 Vuex 状态
+              this.notify('收藏成功', 'success');
+            }
+          })
+          .catch(() => {
+            this.notify('操作失败', 'error');
+          });
+        }
       } else {
         this.notify('请登录后再收藏', 'warning');
       }
@@ -439,4 +467,8 @@ methods: {
 </script>
 <style lang="scss" scoped>
 @import '../assets/css/play-bar.scss';
+
+.item-song-title{
+  color:#fff;
+}
 </style>

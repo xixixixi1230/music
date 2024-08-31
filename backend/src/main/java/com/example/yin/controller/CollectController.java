@@ -1,6 +1,7 @@
 package com.example.yin.controller;
 
 import com.example.yin.common.R;
+import com.example.yin.model.request.CollectAddRequest;
 import com.example.yin.model.request.CollectRequest;
 import com.example.yin.service.CollectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,33 +17,33 @@ public class CollectController {
      * 添加收藏的歌曲或者歌单
      */
     @PostMapping("/collection/add")
-    public R addCollection(@RequestParam Integer userId,
-                           @RequestParam(required = false) Integer songId,
-                           @RequestParam(required = false) Integer songListId,
-                           @RequestParam Byte type) {
-        return collectService.addCollection(userId, songId, songListId, type);
+    public R addCollection(@RequestBody CollectAddRequest collectAddRequest) {
+        Integer userId=collectAddRequest.getUserId();
+        Integer songId=collectAddRequest.getSongId();
+        System.out.println(userId+songId);
+        return collectService.addCollection(userId, songId);
     }
 
     /**
      * 取消收藏的歌曲或者歌单
      */
-    @DeleteMapping("/collection/delete")
-    public R deleteCollection(@RequestParam Integer userId,
-                              @RequestParam(required = false) Integer songId,
-                              @RequestParam(required = false) Integer songListId,
-                              @RequestParam Integer type) {
-        return collectService.deleteCollect(userId, songId, songListId, type);
+    @PostMapping("/collection/delete")
+    public R deleteCollection(@RequestBody CollectAddRequest collectAddRequest) {
+        Integer userId=collectAddRequest.getUserId();
+        Integer songId=collectAddRequest.getSongId();
+        System.out.println(userId+songId);
+        return collectService.deleteCollect(userId, songId);
     }
 
     /**
      * 判断是否收藏歌曲或歌单
      */
     @PostMapping("/collection/status")
-    public R isCollection(@RequestParam Integer userId,
-                          @RequestParam(required = false) Integer songId,
-                          @RequestParam(required = false) Integer songListId,
-                          @RequestParam Integer type) {
-        return collectService.existCollection(userId, songId, songListId, type);
+    public R isCollection(@RequestBody CollectAddRequest collectAddRequest) {
+        Integer userId=collectAddRequest.getUserId();
+        Integer songId=collectAddRequest.getSongId();
+        System.out.println(userId+songId);
+        return collectService.existCollection(userId, songId);
     }
 
     /**

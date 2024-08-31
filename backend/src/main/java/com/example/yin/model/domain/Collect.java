@@ -14,11 +14,8 @@ public class Collect {
 
     private Integer userId;
 
-    private Byte type;
-
     private Integer songId;
 
-    private Integer songListId;
 
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;

@@ -24,6 +24,7 @@
               item.pic,
               index,
               item.name,
+              item.singerName,
               item.lyric,
             )
           "

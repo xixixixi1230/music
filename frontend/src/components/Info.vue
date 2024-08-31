@@ -68,7 +68,7 @@ import { getUserById, updateUserMsg } from '../api/index'
 import axios from "axios";
 import Upload from './Upload.vue';
 export default {
-    name: 'info',
+    name: "info",
     mixins: [mixin],
     data() {
         return {
@@ -218,7 +218,7 @@ export default {
             this.$router.go(index);
         }
     }
-}
+};
 </script>
 
 
