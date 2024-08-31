@@ -15,125 +15,136 @@ const song = {
         lyric: [],                  //未处理的歌词数据
         tempList: {},               //单个歌单信息或歌手信息
         listIndex: null,            //当前歌曲在歌单中的位置
-        volume: 50                  //音量
+        volume: 50 ,                 //音量
+        songLists:[],               // 存储当前歌单列表
     },
     getters: {
+        songLists:state =>{
+            let songLists = state.songLists;
+            if(!songLists.length){
+                songLists = JSON.parse(window.sessionStorage.getItem('songLists')||null);
+            }
+            return songLists;
+        },
         listOfSongs: state => {
             let listOfSongs = state.listOfSongs;
             if(!listOfSongs.length){
-                listOfSongs = JSON.parse(window.sessionStorage.getItem('listOfSongs')||null); 
+                listOfSongs = JSON.parse(window.sessionStorage.getItem('listOfSongs')||null);
             }
             return listOfSongs;
         },
         isPlay: state => {
             let isPlay = state.isPlay;
             if(!isPlay){
-                isPlay = JSON.parse(window.sessionStorage.getItem('isPlay')||null); 
+                isPlay = JSON.parse(window.sessionStorage.getItem('isPlay')||null);
             }
             return isPlay;
         },
         url: state => {
             let url = state.url;
             if(!url){
-                url = JSON.parse(window.sessionStorage.getItem('url')||null); 
+                url = JSON.parse(window.sessionStorage.getItem('url')||null);
             }
             return url;
         },
         id: state => {
             let id = state.id;
             if(!id){
-                id = JSON.parse(window.sessionStorage.getItem('id')||null); 
+                id = JSON.parse(window.sessionStorage.getItem('id')||null);
             }
             return id;
         },
         playButtonUrl: state => {
             let playButtonUrl = state.playButtonUrl;
             if(!playButtonUrl){
-                playButtonUrl = JSON.parse(window.sessionStorage.getItem('playButtonUrl')||null); 
+                playButtonUrl = JSON.parse(window.sessionStorage.getItem('playButtonUrl')||null);
             }
             return playButtonUrl;
         },
         duration: state => {
             let duration = state.duration;
             if(!duration){
-                duration = JSON.parse(window.sessionStorage.getItem('duration')||null); 
+                duration = JSON.parse(window.sessionStorage.getItem('duration')||null);
             }
             return duration;
         },
         curTime: state => {
             let curTime = state.curTime;
             if(!curTime){
-                curTime = JSON.parse(window.sessionStorage.getItem('curTime')||null); 
+                curTime = JSON.parse(window.sessionStorage.getItem('curTime')||null);
             }
             return curTime;
         },
         changeTime: state => {
             let changeTime = state.changeTime;
             if(!changeTime){
-                changeTime = JSON.parse(window.sessionStorage.getItem('changeTime')||null); 
+                changeTime = JSON.parse(window.sessionStorage.getItem('changeTime')||null);
             }
             return changeTime;
         },
-        
         title: state => {
             let title = state.title;
             if(!title){
-                title = JSON.parse(window.sessionStorage.getItem('title')||null); 
+                title = JSON.parse(window.sessionStorage.getItem('title')||null);
             }
             return title;
         },
         artist: state => {
             let artist = state.artist;
             if(!artist){
-                artist = JSON.parse(window.sessionStorage.getItem('artist')||null); 
+                artist = JSON.parse(window.sessionStorage.getItem('artist')||null);
             }
             return artist;
         },
         picUrl: state => {
             let picUrl = state.picUrl;
             if(!picUrl){
-                picUrl = JSON.parse(window.sessionStorage.getItem('picUrl')||null); 
+                picUrl = JSON.parse(window.sessionStorage.getItem('picUrl')||null);
             }
             return picUrl;
         },
         autoNext: state => {
             let autoNext = state.autoNext;
             if(!autoNext){
-                autoNext = JSON.parse(window.sessionStorage.getItem('autoNext')||null); 
+                autoNext = JSON.parse(window.sessionStorage.getItem('autoNext')||null);
             }
             return autoNext;
         },
         lyric: state => {
             let lyric = state.lyric;
             if(!lyric){
-                lyric = JSON.parse(window.sessionStorage.getItem('lyric')||null); 
+                lyric = JSON.parse(window.sessionStorage.getItem('lyric')||null);
             }
             return lyric;
         },
         tempList: state => {
             let tempList = state.tempList;
             if(!tempList){
-                tempList = JSON.parse(window.sessionStorage.getItem('tempList')||null); 
+                tempList = JSON.parse(window.sessionStorage.getItem('tempList')||null);
             }
             return tempList;
         },
         listIndex: state => {
             let listIndex = state.listIndex;
             if(!listIndex){
-                listIndex = JSON.parse(window.sessionStorage.getItem('listIndex')||null); 
+                listIndex = JSON.parse(window.sessionStorage.getItem('listIndex')||null);
             }
             return listIndex;
         },
         volume: state => {
             let volume = state.volume;
             if(!volume){
-                volume = JSON.parse(window.sessionStorage.getItem('volume')||null); 
+                volume = JSON.parse(window.sessionStorage.getItem('volume')||null);
             }
             return volume;
         }
-        
+
     },
     mutations: {
+        setSongLists:(state,songLists)=>{
+            state.songLists=songLists;
+            window.sessionStorage.setItem('songLists',JSON.stringify(songLists));
+        },
         setListOfSongs: (state,listOfSongs) => {
             state.listOfSongs = listOfSongs;
             window.sessionStorage.setItem('listOfSongs',JSON.stringify(listOfSongs));
@@ -157,7 +168,7 @@ const song = {
         setDuration: (state,duration) => {
             state.duration = duration;
             window.sessionStorage.setItem('duration',JSON.stringify(duration));
-        },        
+        },
         setCurTime: (state,curTime) => {
             state.curTime = curTime;
             window.sessionStorage.setItem('curTime',JSON.stringify(curTime));

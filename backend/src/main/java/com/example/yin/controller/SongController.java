@@ -37,4 +37,9 @@ public class SongController {
     public R songBySingerName(@RequestParam String singerName) {
         return songService.songBySingerName(singerName);
     }
+
+    @GetMapping("/song/name/detail")
+    public R songByName(@RequestParam String name) {
+        return songService.songByName(name);
+    }
 }

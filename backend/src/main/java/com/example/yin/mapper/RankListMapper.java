@@ -25,4 +25,6 @@ public interface RankListMapper extends BaseMapper<RankList> {
      */
     Integer selectUserRank(@Param("consumer_id") Long consumerId, @Param("song_list_id")  Long songListId);
     List<Long>  findAllSongListIds();
+
+    int update(RankList rankList);
 }

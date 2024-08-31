@@ -94,37 +94,75 @@ export default {
     },
     methods:{
       //提交注册
-      submitRegister(){
-          this.$refs['registerForm'].validate((valid) => {
-            if(valid){
-              let _this = this;
-              let d = this.registerForm.birth;
-              let datetime = d.getFullYear() + '-' +(d.getMonth() + 1) +'-' + d.getDate();
-              let params = new URLSearchParams();
-              params.append('username',this.registerForm.username);
-              params.append('password',this.registerForm.password);
-              params.append('sex',this.registerForm.sex);
-              params.append('phoneNum',this.registerForm.phoneNum);
-              params.append('email',this.registerForm.email);
-              params.append('birth',datetime);
-              params.append('introduction',this.registerForm.introduction);
-              params.append('location',this.registerForm.location);
-              params.append('avator','/img/user.jpg');
-              SignUp(params).then(res => {
-                if (res.code == 1) {
-                  _this.notify('注册成功','success');
-                  setTimeout(function(){
-                    _this.$router.push({path: '/'});
-                  }, 2000);
+      submitRegister() {
+    this.$refs['registerForm'].validate((valid) => {
+        if (valid) {
+            let _this = this;
+            let d = new Date(this.registerForm.birth);
+            let datetime = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`;             
+            console.log(datetime);
+            
+            // 构建参数对象
+            let params = {
+                username: this.registerForm.username,
+                password: this.registerForm.password,
+                sex: this.registerForm.sex,
+                phoneNum: this.registerForm.phoneNum,
+                email: this.registerForm.email,
+                birth: d,
+                introduction: this.registerForm.introduction,
+                location: this.registerForm.location,
+                avator: '/img/user.jpg'
+            };
+
+            // 使用 SignUp 方法提交数据
+            SignUp(params).then(res => {
+                if (res.code == 200) {
+                    _this.notify('注册成功', 'success');
+                    setTimeout(function () {
+                        _this.$router.push({ path: '/' });
+                    }, 2000);
                 } else {
-                  _this.notify('注册失败','error');
+                    _this.notify('注册失败', 'error');
                 }
-              }).catch(err => {
-                _this.notify('注册失败','error');
-            })
-          }
-        });
-      },
+            }).catch(err => {
+                _this.notify('注册失败', 'error');
+            });
+        }
+    });
+},
+
+      // submitRegister(){
+      //     this.$refs['registerForm'].validate((valid) => {
+      //       if(valid){
+      //         let _this = this;
+      //         let d = this.registerForm.birth;
+      //         let datetime = d.getFullYear() + '-' +(d.getMonth() + 1) +'-' + d.getDate();
+      //         let params = new URLSearchParams();
+      //         params.append('username',this.registerForm.username);
+      //         params.append('password',this.registerForm.password);
+      //         params.append('sex',this.registerForm.sex);
+      //         params.append('phoneNum',this.registerForm.phoneNum);
+      //         params.append('email',this.registerForm.email);
+      //         params.append('birth',datetime);
+      //         params.append('introduction',this.registerForm.introduction);
+      //         params.append('location',this.registerForm.location);
+      //         params.append('avator','/img/user.jpg');
+      //         SignUp(params).then(res => {
+      //           if (res.code == 1) {
+      //             _this.notify('注册成功','success');
+      //             setTimeout(function(){
+      //               _this.$router.push({path: '/'});
+      //             }, 2000);
+      //           } else {
+      //             _this.notify('注册失败','error');
+      //           }
+      //         }).catch(err => {
+      //           _this.notify('注册失败','error');
+      //       })
+      //     }
+      //   });
+      // },
       goback(index){
         this.$router.go(index);
       }

@@ -62,13 +62,17 @@
     cursor: pointer;
     transition: font-size 0.3s ease;
 
-    & font-enlarge {
-      font-size: 1.5 em;
-    }
+    &:hover,
+    &.font-enlarge {
+      font-size: 1.5em;
   }
-  li:hover {
-    font-size: 1.5em;
   }
+  // li.font-enlarge {
+  //   font-size: 1.5em; /* 这个类用于点击后保持放大 */
+  // }
+  // li:hover {
+  //   font-size: 1.5em;
+  // }
 }
 
 /*搜索*/

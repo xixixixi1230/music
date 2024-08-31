@@ -46,7 +46,7 @@ export default {
       let arr = str.split('-')
       console.log("歌曲名字"+arr[1])
       return arr[1]
-      
+
     },
     //播放
     toplay: function (id, url, pic, index, name, lyric, isVip) {

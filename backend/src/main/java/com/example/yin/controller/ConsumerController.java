@@ -148,4 +148,9 @@ public class ConsumerController {
         return consumerService.updateUserAvator(avatorFile, id);
     }
 
+    @GetMapping("/user/detail")
+    public R getUserById(@RequestParam("userId") Integer userId) {
+        return consumerService.getUserById(userId);
+    }
+
 }

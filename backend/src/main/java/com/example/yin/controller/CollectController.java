@@ -16,11 +16,10 @@ public class CollectController {
      * 添加收藏的歌曲或者歌单
      */
     @PostMapping("/collection/add")
-    public R addCollection(@RequestParam(value="userId") Integer userId,
-                           @RequestParam(value="songId",required = false) Integer songId,
-                           @RequestParam(value="songListId",required = false) Integer songListId,
-                           @RequestParam(value="type") Byte type) {
-        System.out.println(userId);
+    public R addCollection(@RequestParam Integer userId,
+                           @RequestParam(required = false) Integer songId,
+                           @RequestParam(required = false) Integer songListId,
+                           @RequestParam Byte type) {
         return collectService.addCollection(userId, songId, songListId, type);
     }
 

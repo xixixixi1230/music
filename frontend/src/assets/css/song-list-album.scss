@@ -4,12 +4,23 @@
 .song-list-album {
   margin-top: $header-height;
   padding-top: 150px;
-  background-color: $theme-background-color;
+  // background-color: $theme-background-color;
+  background-color: rgba(186, 155, 227, 0.135);
 
+  // &::before {
+  //   /*背景*/
+  //   content: "";
+  //   background-color: $theme-color;
+  //   position: absolute;
+  //   top: 0;
+  //   width: 100%;
+  //   height: $header-height + 150px;
+  // }
   &::before {
     /*背景*/
     content: "";
-    background-color: $theme-color;
+    background: url('../assets/img/img.png');
+    background-repeat: cover;
     position: absolute;
     top: 0;
     width: 100%;
@@ -83,7 +94,16 @@
   .songs-body {
     background-color: $color-white;
     border-radius: 12px;
-    padding: 0 40px 50px 40px;
+    padding: 10px 40px 20px 40px;
     min-width: 700px;
+  }
+
+  // 歌曲评论
+  .songs-comment{
+    background-color: $color-white;
+    border-radius: 12px;
+    padding: 10px 40px 20px 40px;
+    min-width: 700px;
+    margin-top: 20px;
   }
 }

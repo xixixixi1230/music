@@ -3,6 +3,7 @@ package com.example.yin.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.yin.common.R;
 import com.example.yin.model.domain.Comment;
+import com.example.yin.model.request.CommentLikeRequest;
 import com.example.yin.model.request.CommentRequest;
 
 public interface CommentService extends IService<Comment> {
@@ -16,5 +17,5 @@ public interface CommentService extends IService<Comment> {
 
     R commentOfSongListId(Integer songListId);
 
-    R likeComment(Integer commentId);
+    R likeComment(CommentLikeRequest commentrequest);
 }
