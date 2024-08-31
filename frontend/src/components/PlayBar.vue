@@ -276,8 +276,6 @@ methods: {
         this.$store.commit('setListIndex', 0)
       }
       this.toplay(this.listOfSongs[this.listIndex].url)
-      console.log(this.listOfSongs[this.listIndex]);
-      
       this.resetProgress() // 重置进度条和当前时间
       this.$store.commit('setIsPlay', true) // 确保播放状态被设置为播放
     }
@@ -287,7 +285,7 @@ methods: {
   // 播放音乐
   toplay (url) {
     console.log("播放音乐");
-    
+
     if (url && url !== this.url) {
       console.log("====================");
       this.$store.commit('setId', this.listOfSongs[this.listIndex].id)
@@ -295,7 +293,9 @@ methods: {
       this.$store.commit('setPicUrl', this.$store.state.configure.HOST + this.listOfSongs[this.listIndex].pic)
       this.$store.commit('setTitle', this.listOfSongs[this.listIndex].name)
       this.$store.commit('setArtist', this.listOfSongs[this.listIndex].singerName)
-      this.$store.commit('setLyric', this.parseLyric(this.listOfSongs[this.listIndex].lyric))
+      //this.$store.commit('setLyric', this.parseLyric(this.listOfSongs[this.listIndex].lyric))
+      this.$store.commit('setLyric', lyric);
+      window.sessionStorage.setItem('lyric', JSON.stringify(lyric));
       this.$store.commit('setIsActive', false)
       if (this.loginIn) {
         let userId=this.$store.getters.userId;
@@ -311,7 +311,7 @@ methods: {
           }
           else{
             console.log("为收藏");
-            
+
             this.$store.commit('setIsActive', false)
           }
         })
@@ -329,7 +329,9 @@ methods: {
   //   return arr[1]
   // },
   // 解析歌词
-  parseLyric (text) {
+  parseLyric (lyric) {
+    console.log("播放条测试："+lyric)
+    let text = lyric
     let lines = text.split('\n')
     let pattern = /\[\d{2}:\d{2}.(\d{3}|\d{2})\]/g
     let result = []
@@ -395,7 +397,7 @@ methods: {
               console.log(this.isActive);
               // this.$store.commit('setIsActive', this.isActive); // 更新 Vuex 状态
               this.notify('取消收藏成功', 'success');
-            } 
+            }
           })
           .catch(() => {
             this.notify('操作失败', 'error');
@@ -409,17 +411,37 @@ methods: {
               console.log(this.isActive);
               this.$store.commit('setIsActive', true); // 更新 Vuex 状态
               this.notify('收藏成功', 'success');
-            } 
+            }
           })
           .catch(() => {
             this.notify('操作失败', 'error');
           });
         }
-        
+
       } else {
         this.notify('请登录后再收藏', 'warning');
       }
     },
+
+  // collection () {
+  //   if (this.loginIn) {
+  //     var params = new URLSearchParams()
+  //     params.append('userId', this.userId)
+  //     params.append('type', 0)
+  //     params.append('songId', this.id)
+  //     setCollect(params)
+  //       .then(res => {
+  //         if (res.code === 1) {
+  //           this.$store.commit('setIsActive', true)
+  //           this.notify('收藏成功', 'success')
+  //         } else if (res.code === 2) {
+  //           this.notify('已收藏', 'warning')
+  //         }
+  //       })
+  //   } else {
+  //     this.notify('请登录后再收藏', 'warning')
+  //   }
+  // },
   // 重置播放进度和时间
   resetProgress() {
     this.nowTime = '00:00'

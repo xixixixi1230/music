@@ -129,7 +129,7 @@ export default {
             this.getUsers(item.userId);
           }
           console.log(this.commentList);
-          
+
         })
         .catch((err) => {
           this.notify("评论加载失败", "error");
@@ -156,14 +156,14 @@ export default {
     //         "up":up+1
     //     }
     //     console.log(params);
-        
+
     //     // params.append("id", id);
     //     // params.append("up", up + 1);
     //     setLike(params)
     //       .then((res) => {
     //         if (res.code == 200) {
     //             console.log(res);
-                
+
     //           this.$refs.up[index].children[0].style.color = "#2796cd";
     //           this.getComment();
     //         } else {

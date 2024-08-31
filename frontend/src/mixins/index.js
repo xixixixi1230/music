@@ -93,7 +93,7 @@ export const mixin = {
           }
           else{
             console.log("为收藏");
-            
+
             this.$store.commit('setIsActive', false)
             localStorage.setItem("isActive",false)
           }
@@ -101,7 +101,9 @@ export const mixin = {
       }
     },
     //解析歌词
-    parseLyric(text) {
+    parseLyric(lyric) {
+      console.log("歌词："+lyric)
+      let text = lyric
       let lines = text.split('\n')                   //将歌词按行分解成数组
       let pattern = /\[\d{2}:\d{2}.(\d{3}|\d{2})\]/g //时间格式的正则表达式
       let result = []                                //返回值
