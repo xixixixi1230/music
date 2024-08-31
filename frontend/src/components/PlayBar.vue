@@ -256,6 +256,8 @@ methods: {
   },
   // 上一首
   prev () {
+    console.log("上一首");
+    
     if (this.listIndex !== -1 && this.listOfSongs.length > 1) {
       if (this.listIndex > 0) {
         this.$store.commit('setListIndex', this.listIndex - 1)
@@ -269,6 +271,8 @@ methods: {
   },
   // 下一首
   next () {
+    console.log("下一首");
+    
     if (this.listIndex !== -1 && this.listOfSongs.length > 1) {
       if (this.listIndex < this.listOfSongs.length - 1) {
         this.$store.commit('setListIndex', this.listIndex + 1)
@@ -284,19 +288,16 @@ methods: {
 
   // 播放音乐
   toplay (url) {
-    console.log("播放音乐");
+    console.log("toplay播放音乐");
 
     if (url && url !== this.url) {
       console.log("====================");
+      this.isActive=false;
       this.$store.commit('setId', this.listOfSongs[this.listIndex].id)
       this.$store.commit('setUrl', this.$store.state.configure.HOST + url)
       this.$store.commit('setPicUrl', this.$store.state.configure.HOST + this.listOfSongs[this.listIndex].pic)
       this.$store.commit('setTitle', this.listOfSongs[this.listIndex].name)
       this.$store.commit('setArtist', this.listOfSongs[this.listIndex].singerName)
-      //this.$store.commit('setLyric', this.parseLyric(this.listOfSongs[this.listIndex].lyric))
-      this.$store.commit('setLyric', lyric);
-      window.sessionStorage.setItem('lyric', JSON.stringify(lyric));
-      this.$store.commit('setIsActive', false)
       if (this.loginIn) {
         let userId=this.$store.getters.userId;
         let songId=this.$store.getters.id
@@ -306,16 +307,28 @@ methods: {
         }
         isCollect(params)
         .then(res=>{
+          console.log(res.data);
+          
           if(res.data){
             this.$store.commit('setIsActive', true)
+            console.log("playBar isCollect");
+            
+            console.log(this.$store.getters.isActive);;
+            
+            this.isActive=true;
           }
           else{
-            console.log("为收藏");
-
+            console.log("未收藏");
+            this.isActive=false;
             this.$store.commit('setIsActive', false)
           }
         })
       }
+      //this.$store.commit('setLyric', this.parseLyric(this.listOfSongs[this.listIndex].lyric))
+      this.$store.commit('setLyric', lyric);
+      window.sessionStorage.setItem('lyric', JSON.stringify(lyric));
+      this.$store.commit('setIsActive', false)
+      
     }
   },
   // // 获取名字前半部分--歌手名

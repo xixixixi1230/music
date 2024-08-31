@@ -42,7 +42,8 @@ public class CollectController {
     public R isCollection(@RequestBody CollectAddRequest collectAddRequest) {
         Integer userId=collectAddRequest.getUserId();
         Integer songId=collectAddRequest.getSongId();
-        System.out.println(userId+songId);
+        System.out.println("userId:"+userId);
+        System.out.println("songId:"+songId);
         return collectService.existCollection(userId, songId);
     }
 

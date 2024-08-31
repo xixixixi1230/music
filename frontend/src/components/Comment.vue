@@ -91,14 +91,14 @@ export default {
         // params.append("userId", this.userId);
         // params.append("type", this.type);
         // params.append("content", this.textarea);
-        this.userPic=[]
-        this.userName=[]
-        let params={
-            "songListId":this.playId,
-            "userId":this.userId,
-            "nowType":this.type,
-            "content":this.textarea
-        }
+        this.userPic = [];
+        this.userName = [];
+        let params = {
+          songListId: this.playId,
+          userId: this.userId,
+          nowType: this.type,
+          content: this.textarea,
+        };
         console.log(params);
         setComment(params)
           .then((res) => {
@@ -122,14 +122,37 @@ export default {
     getComment() {
       getAllComment(this.type, this.playId)
         .then((res) => {
-            this.userPic=[]
-            this.userName=[]
           this.commentList = res.data;
-          for (let item of res.data) {
-            this.getUsers(item.userId);
-          }
-          console.log(this.commentList);
+          let len = res.data.length;
+          // this.userPic=new Array(len);
+          // this.userName=new Array(len);
+          this.userPic = [];
+          this.userName = [];
 
+          // for (let i = 0; i < len; i++) {
+          //   console.log(i);
+
+          //   this.getUsers(res.data[i].userId, i);
+          // }
+          // console.log(this.commentList);
+          // console.log(this.userPic);
+          // console.log(this.userName);
+
+          // 创建一个数组来存储所有 getUsers 请求的 Promise
+          const userPromises = res.data.map((comment) =>
+            this.getUsers(comment.userId)
+          );
+
+          // 等待所有请求完成
+          Promise.all(userPromises)
+            .then(() => {
+              console.log(this.commentList);
+              console.log(this.userPic);
+              console.log(this.userName);
+            })
+            .catch((err) => {
+              this.notify("用户信息加载失败", "error");
+            });
         })
         .catch((err) => {
           this.notify("评论加载失败", "error");
@@ -141,7 +164,6 @@ export default {
         .then((res) => {
           this.userPic.push(res.data[0].avator);
           this.userName.push(res.data[0].username);
-          console.log(this.userName);
         })
         .catch((err) => {
           this.notify("出错了", "error");

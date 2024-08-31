@@ -40,8 +40,10 @@ public class CollectServiceImpl extends ServiceImpl<CollectMapper, Collect> impl
         queryWrapper.eq("user_id", userId);
         queryWrapper.eq("song_id", songId);
         if (collectMapper.selectCount(queryWrapper) > 0) {
+            System.out.println(true);
             return R.success("已收藏", true);
         } else {
+            System.out.println(false);
             return R.success("未收藏", false);
         }
     }
