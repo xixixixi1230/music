@@ -46,7 +46,7 @@
 <script>
 import { mixin } from "../mixins";
 import { mapGetters } from "vuex";
-import { setComment, setLike, getAllComment, getUserOfId } from "../api/index";
+import { setComment, setLike, getAllComment, getUserById } from "../api/index";
 
 export default {
   name: "comment",
@@ -137,7 +137,7 @@ export default {
     },
     //获取用户的头像和昵称
     getUsers(id) {
-      getUserOfId(id)
+      getUserById(id)
         .then((res) => {
           this.userPic.push(res.data[0].avator);
           this.userName.push(res.data[0].username);

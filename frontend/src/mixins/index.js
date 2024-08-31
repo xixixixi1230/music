@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex'
-import { likeSongOfName, getCollectOfUserId, addSongNums } from '../api/index'
+import { likeSongOfName, isCollect, addSongNums } from '../api/index'
 
 export const mixin = {
   computed: {
@@ -50,42 +50,54 @@ export const mixin = {
     //   return arr[1]
     // },
     //播放
-    toplay: function (id, url, pic, index, name, lyric, isVip) {
-      console.log("---------", isVip)
+    toplay: function (id, url, pic, index, name,singerName, lyric, isVip) {
+      console.log("toplay");
+      console.log("---------", singerName)
       if (!isVip) {
-        console.log("============直接播放")
-        this.play(id, url, pic, index, name, lyric)
+        console.log("============直接播放",singerName)
+        this.play(id, url, pic, index, name,singerName, lyric)
       } else {
         //需要vip资格才能播放, 读取store中的 isVip信息
         const canPlay = this.$store.getters.isVip
         if (canPlay) {
-          this.play(id, url, pic, index, name, lyric)
+          this.play(id, url, pic, index, name,singerName, lyric)
         } else {
           this.$message.error('你还不是VIP,不能播放这首歌')
         }
       }
     },
-    play(id, url, pic, index, name, lyric) {
-      addSongNums(id)
+    play(id, url, pic, index, name,singerName, lyric) {
+      // addSongNums(id)
       this.$store.commit('updPlayerStatus', true)
       this.$store.commit('setId', id)
       this.$store.commit('setUrl', this.$store.state.configure.HOST + url)
       this.$store.commit('setPicUrl', this.$store.state.configure.HOST + pic)
       this.$store.commit('setListIndex', index)
-      this.$store.commit('setTitle', this.replaceFName(name))
-      this.$store.commit('setArtist', this.replaceLName(name))
+      this.$store.commit('setTitle', name)
+      this.$store.commit('setArtist', singerName)
       this.$store.commit('setLyric', this.parseLyric(lyric))
       this.$store.commit('setIsActive', false)
       if (this.loginIn) {
-        getCollectOfUserId(this.userId)
-          .then(res => {
-            for (let item of res) {
-              if (item.songId == id) {
-                this.$store.commit('setIsActive', true)
-                break
-              }
-            }
-          })
+        let userId=this.$store.getters.userId;
+        let songId=this.$store.getters.id
+        let params={
+          'userId': userId,
+          'songId':songId,
+        }
+        isCollect(params)
+        .then(res=>{
+          console.log(res);
+          if(res.data){
+            this.$store.commit('setIsActive', true)
+            localStorage.setItem("isActive",true)
+          }
+          else{
+            console.log("为收藏");
+            
+            this.$store.commit('setIsActive', false)
+            localStorage.setItem("isActive",false)
+          }
+        })
       }
     },
     //解析歌词

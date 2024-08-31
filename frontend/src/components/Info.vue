@@ -151,7 +151,7 @@ export default {
                 });
         },
         getMsg(userId) {
-            getUserOfId(userId)
+            getUserById(userId)
                 .then(res => {
                     this.registerForm.username = res.username;
                     this.registerForm.password = res.password;

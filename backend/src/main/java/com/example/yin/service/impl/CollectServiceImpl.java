@@ -18,20 +18,12 @@ public class CollectServiceImpl extends ServiceImpl<CollectMapper, Collect> impl
     private CollectMapper collectMapper;
 
     @Override
-    public R addCollection(Integer userId, Integer songId, Integer songListId, Byte type) {
+    public R addCollection(Integer userId, Integer songId) {
         // 根据type来判断收藏的是歌曲还是歌单
         Collect collect = new Collect();
         collect.setUserId(userId);
         collect.setCreateTime(new Date()); // 设置 createTime 为当前时间
-        collect.setType(type); // 设置收藏类型
-
-        if (type == 0 && songId != null) {
-            collect.setSongId(songId);
-        } else if (type == 1 && songListId != null) {
-            collect.setSongListId(songListId);
-        } else {
-            return R.error("无效的收藏类型或参数缺失");
-        }
+        collect.setSongId(songId);
 
         if (collectMapper.insert(collect) > 0) {
             return R.success("收藏成功", true);
@@ -43,18 +35,10 @@ public class CollectServiceImpl extends ServiceImpl<CollectMapper, Collect> impl
 
 
     @Override
-    public R existCollection(Integer userId, Integer songId, Integer songListId, Integer type) {
+    public R existCollection(Integer userId, Integer songId) {
         QueryWrapper<Collect> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id", userId);
-
-        if (type == 0 && songId != null) {
-            queryWrapper.eq("song_id", songId);
-        } else if (type == 1 && songListId != null) {
-            queryWrapper.eq("song_list_id", songListId);
-        } else {
-            return R.error("无效的收藏类型或参数缺失");
-        }
-
+        queryWrapper.eq("song_id", songId);
         if (collectMapper.selectCount(queryWrapper) > 0) {
             return R.success("已收藏", true);
         } else {
@@ -64,21 +48,10 @@ public class CollectServiceImpl extends ServiceImpl<CollectMapper, Collect> impl
 
 
     @Override
-    public R deleteCollect(Integer userId, Integer songId, Integer songListId, Integer type) {
+    public R deleteCollect(Integer userId, Integer songId) {
         QueryWrapper<Collect> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id", userId);
-
-        // 根据type判断取消收藏的是歌曲还是歌单
-        if (type == 0 && songId != null) {
-            // 取消收藏歌曲
-            queryWrapper.eq("song_id", songId);
-        } else if (type == 1 && songListId != null) {
-            // 取消收藏歌单
-            queryWrapper.eq("song_list_id", songListId);
-        } else {
-            return R.error("无效的取消收藏请求");
-        }
-
+        queryWrapper.eq("song_id", songId);
         if (collectMapper.delete(queryWrapper) > 0) {
             return R.success("取消收藏成功", false);
         } else {

@@ -5,23 +5,176 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01b759cb-e02f-4fc0-910a-aa0545e767c3" name="Changes" comment="歌单，歌手，我的音乐背景和歌曲列表链接">
-      <change afterPath="$PROJECT_DIR$/../frontend/build/build.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/build/check-versions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/build/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/build/vue-loader.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/build/webpack.base.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/build/webpack.dev.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/build/webpack.prod.conf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/CollectAddRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ApifoxUploaderProjectSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ApifoxUploaderProjectSetting.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/MusicServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/MusicServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/common/Consts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/common/Consts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/common/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/common/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/constant/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/CollectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/CollectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/ConsumerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/ConsumerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/ListSongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/ListSongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/MinioUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/MinioUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/RankListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/RankListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/SingerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/SingerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/SongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/SongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/SongListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/controller/SongListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/CollectMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/CollectMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/CommentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/ConsumerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/ConsumerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/ListSongMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/ListSongMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/RankListMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/RankListMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/SingerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/SingerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/SongListMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/SongListMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/SongMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/mapper/SongMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Collect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Collect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/ListSong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/ListSong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/RankList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/RankList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/ResetPasswordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/ResetPasswordRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Singer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Singer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/SongList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/domain/SongList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/CollectRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/CollectRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/CommentLikeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/CommentLikeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/CommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/CommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/ConsumerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/ConsumerRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/ListSongRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/ListSongRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/RankListRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/model/request/RankListRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/CollectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/CollectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/ConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/ConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/ListSongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/ListSongService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/OrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/OrderManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/RankListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/RankListService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/SingerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/SingerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/SongListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/SongListService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/SongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/SongService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/CollectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/CollectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/ConsumerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/ConsumerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/ListSongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/ListSongServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/RankListServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/RankListServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SimpleOrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SimpleOrderManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SingerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SingerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SongListServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SongListServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/service/impl/SongServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/yin/utils/RandomUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/yin/utils/RandomUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ConcumerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ConcumerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ListSongMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ListSongMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RankListMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RankListMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SingerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SingerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SongListMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SongListMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SongService.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SongService.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/yin/MusicServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/yin/MusicServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/model/domain/Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/model/domain/Consumer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/model/request/ConsumerRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/model/request/ConsumerRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/SimpleOrderManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/yin/service/impl/SimpleOrderManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ConcumerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ConcumerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/SingerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/SingerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/SongService.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/SongService.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.eslintignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.postcssrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.postcssrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/build/build.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/build/build.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/build/check-versions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/build/check-versions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/build/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/build/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/build/vue-loader.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/build/vue-loader.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/build/webpack.base.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/build/webpack.base.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/build/webpack.dev.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/build/webpack.dev.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/build/webpack.prod.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/build/webpack.prod.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/config/dev.env.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/config/dev.env.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/config/prod.env.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/config/prod.env.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/config/test.env.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/config/test.env.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/404.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/404.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/album-content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/album-content.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/comment.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/comment.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/content-list.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/content-list.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/global.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/info.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/info.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/login-in.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/login-in.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/login-logo.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/login-logo.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/my-music.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/my-music.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/play-bar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/play-bar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/scroll-top.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/scroll-top.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/search-song-Lists.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/search-song-Lists.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/search-songs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/search-songs.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/search.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/search.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/setting.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/setting.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/sign-up.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/sign-up.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/song-audio.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/song-audio.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/song-list-album.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/song-list-album.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/the-aside.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/the-aside.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/the-header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/the-header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/css/var.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/css/var.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/data/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/data/form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/assets/data/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/data/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/data/singer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/data/singer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/data/songList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/data/songList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/data/swiper.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/data/swiper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/js/iconfont.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/js/iconfont.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/js/iconfont1.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/js/iconfont1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/js/iconfont3.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/js/iconfont3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/AlbumContent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/AlbumContent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/CodeCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/CodeCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Comment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Comment.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ContentList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ContentList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Info.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/LoginLogo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/LoginLogo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/PlayBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/PlayBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Playmv.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Playmv.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ScrollTop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ScrollTop.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/SongAudio.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/SongAudio.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Swiper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Swiper.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/TheAside.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/TheAside.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/TheHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/TheHeader.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Upload.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Upload.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/search/SearchSongLists.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/search/SearchSongLists.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/search/SearchSongs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/search/SearchSongs.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/mixins/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/mixins/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/LoginIn.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/LoginIn.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Lyric.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Lyric.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/MyMusic.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/MyMusic.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Search.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Search.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Setting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Setting.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/SignUp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/SignUp.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Singer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Singer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/SongListAlbum.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/SongListAlbum.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/store/song.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store/song.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/test/e2e/custom-assertions/elementCount.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/test/e2e/custom-assertions/elementCount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/test/e2e/nightwatch.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/test/e2e/nightwatch.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/test/e2e/runner.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/test/e2e/runner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/test/e2e/specs/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/test/e2e/specs/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/test/unit/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/test/unit/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/test/unit/jest.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/test/unit/jest.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/test/unit/setup.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/test/unit/setup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/test/unit/specs/HelloWorld.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/test/unit/specs/HelloWorld.spec.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +217,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/桌面/暑期实训项目/music",
+    "last_opened_file_path": "D:/桌面/暑期实训项目/music/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,7 +233,15 @@
     ]
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RunManager" selected="Spring Boot.MusicServerApplication">
+    <configuration name="consumer.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="f10372f2-5fd3-47a8-bdcb-5eb31dc1f613/schema/music/table/consumer.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="backend" />
       <method v="2">
@@ -104,6 +265,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.MusicServerApplication" />
+        <item itemvalue="Database Script.consumer.sql" />
       </list>
     </recent_temporary>
   </component>
@@ -130,6 +292,7 @@
       <workItem from="1724951163252" duration="7760000" />
       <workItem from="1725039352421" duration="4565000" />
       <workItem from="1725047795028" duration="11000" />
+      <workItem from="1725094347906" duration="4793000" />
     </task>
     <task id="LOCAL-00001" summary="收藏">
       <option name="closed" value="true" />

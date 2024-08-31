@@ -14,7 +14,7 @@
 </template>
 <script>
 import {mapGetters} from 'vuex'
-import {getCollectOfUserId} from '../api/index'
+import {isCollect} from '../api/index'
 
 export default {
   name: 'the-aside',
@@ -76,15 +76,18 @@ export default {
       this.$store.commit('setLyric', this.parseLyric(lyric))
       this.$store.commit('setIsActive', false)
       if (this.loginIn) {
-        getCollectOfUserId(this.userId)
-          .then(res => {
-            for (let item of res) {
-              if (item.songId == id) {
-                this.$store.commit('setIsActive', true)
-                break
-              }
-            }
-          })
+        let userId=this.$store.getters.userId;
+        let songId=this.$store.getters.id
+        let params={
+          'userId': userId,
+          'songId':songId,
+        }
+        isCollect(params)
+        .then(res=>{
+          if(res.data){
+            this.$store.commit('setIsActive', true)
+          }
+        })
       }
     },
 
