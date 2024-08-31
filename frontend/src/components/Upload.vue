@@ -110,90 +110,25 @@ export default {
           }
         })
         .then(res => {
-            console.log(res);
-            
+          //console.log(res);
+          const newAvatarUrl = res.data.data;
+          // 确认 URL 是否正确
+          console.log("New Avatar URL: ", newAvatarUrl);
+          // 更新 Vuex Store 中的 avator 状态
+          this.$store.commit('setAvator', newAvatarUrl);
+
+          // 强制组件重新渲染
+          this.$forceUpdate();
           console.log("File uploaded successfully");
         })
         .catch(error => {
           console.error("Error uploading file:", error);
         });
 
-      // 使用 axios 发送 POST 请求
-      //   axios.post('your-backend-url', formData, {
-      //     headers: {
-      //       'Content-Type': 'multipart/form-data'
-      //     }
-      //   })
-      //   .then(response => {
-      //     this.$message.success('文件上传成功！');
-      //     console.log(response.data);
-      //   })
-      //   .catch(error => {
-      //     this.$message.error('文件上传失败！');
-      //     console.error(error);
-      //   });
     }
-  }
-  // data() {
-  //   return {
-  //     selectedFile: null, // 存储用户选择的文件
-  //   };
-  //  },
-  // mixins: [mixin],
-  // computed:{
-  //     ...mapGetters([
-  //         'userId',
-  //         'avator',
-  //     ])
-  // },
-  // methods:{
-  //     uploadFile(){
-  //       if (!this.selectedFile) {
-  //         alert('Please select a file to upload.');
-  //         return;
-  //       }
-  //       // 创建一个FormData对象并附加文件数据
-  //       const formData = new FormData();
-  //       formData.append('file', this.selectedFile); // "file"是请求的参数名
 
-  //       updateUserAvator(this.userId,formData)
-  //         .then(res =>{
-  //           console.log(res);
-  //             if(res.code == 200){
-  //                 this.notify('修改成功','success');
-  //             }else{
-  //                 this.notify('修改失败','error');
-  //             }
-  //         })
-  //         .catch(err =>{
-  //             console.log(err);
-  //         })
-  //     },
-  //      //上传成功
-  //      handleAvatorSuccess(res, file) {
-  //         // 在上传成功后直接设置 Vuex 中的 avator 状态
-  //         const reader = new FileReader();
-  //         reader.onload = (e) => {
-  //             this.$store.commit('setAvator', e.target.result); // 使用 Base64 数据设置头像
-  //             this.notify('修改成功', 'success');
-  //         };
-  //         reader.readAsDataURL(file.raw); // 读取上传的文件为 Base64
-  //     },
-  //     //上传之前的校验
-  //     beforeAvatorUpload(file){
-  //         const isJPG = file.type=='image/jpeg';
-  //         const isLt10M = file.size /1024/1024<10;
-  //         if(!isJPG){
-  //             this.notify('上传头像图片只能是JPG格式','error');
-  //             return false;
-  //         }
-  //         if(!isLt10M){
-  //             this.notify('上传头像图片不能大于10MB','error');
-  //             return false;
-  //         }
-  //         return true;
-  //     }
-  // }
+  }
+  
 };
 </script>
 <style lang="scss" scoped>

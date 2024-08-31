@@ -76,7 +76,6 @@ export default {
       }
     },
     handleLoginIn () {
-      //阻止点击按钮时的表单提交，避免二次登录
       event.preventDefault();
       let _this = this
       let params = new URLSearchParams()

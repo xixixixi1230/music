@@ -2,11 +2,10 @@
     <div>
         <div class="info">
             <div class="title">
-                <span>编辑个人资料</span>
+                <span style="font-size: 27px;margin-left: 20px;">编辑个人资料</span>
             </div>
-            <hr />
+            <!-- <hr /> -->
             <div class="personal">
-
                 <el-form :model="registerForm" ref="registerForm" label-width="70px" class="demo-ruleForm"
                     :rules="rules">
                     <el-form-item label="头像">
@@ -23,8 +22,8 @@
                     <el-form-item prop="username" label="用户名">
                         <el-input v-model="registerForm.username" placeholder="用户名"></el-input>
                     </el-form-item>
-                    <el-form-item prop="password" label="密码">
-                        <el-input type="password" v-model="registerForm.password" placeholder="密码"></el-input>
+                    <el-form-item prop="password" label="新密码">
+                        <el-input type="password" v-model="registerForm.password" placeholder="请输入新密码"></el-input>
                     </el-form-item>
                     <el-form-item prop="sex" label="性别">
                         <el-radio-group v-model="registerForm.sex">
@@ -39,7 +38,7 @@
                         <el-input v-model="registerForm.email" placeholder="邮箱"></el-input>
                     </el-form-item>
                     <el-form-item prop="birth" label="生日">
-                        <el-date-picker type="date" :editable="false" v-model="registerForm.birth" placeholder="选择日期"
+                        <el-date-picker type='date' :editable="false" v-model="registerForm.birth" placeholder="选择日期"
                             style="width: 100%;"></el-date-picker>
                     </el-form-item>
                     <el-form-item prop="introduction" label="签名">
@@ -47,7 +46,7 @@
                     </el-form-item>
                     <el-form-item prop="location" label="地区">
                         <el-select v-model="registerForm.location" placeholder="地区" style="width: 100%;">
-                            <el-option v-for="item in cities" :key="item.value" :label="item.label"
+                            <el-option v-for=" item in cities" :key="item.value" :label="item.label"
                                 :value="item.value"></el-option>
                         </el-select>
                     </el-form-item>
@@ -57,49 +56,51 @@
                     <div @click="goback(-1)">取消</div>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
-import { rules, cities } from "../assets/data/form";
-import { mixin } from "../mixins";
-import { getUserOfId, updateUserMsg } from "../api/index";
+import { mapGetters } from 'vuex'
+import { rules, cities } from '../assets/data/form'
+import { mixin } from '../mixins'
+import { getUserById, updateUserMsg } from '../api/index'
 import axios from "axios";
 import Upload from './Upload.vue';
-
 export default {
     name: "info",
     mixins: [mixin],
     data() {
         return {
             registerForm: {
-                username: "", //用户名
-                password: "", //密码
-                sex: "", //性别
-                phoneNum: "", //手机
-                email: "", //邮箱
-                birth: "", //生日
-                introduction: "", //签名
-                location: "" //地区
+                id: '',
+                username: '',       //用户名
+                password: '',       //密码
+                sex: '',            //性别
+                phoneNum: '',       //手机
+                email: '',          //邮箱
+                birth: '',          //生日
+                introduction: '',   //签名
+                location: ''       //地区
             },
-            cities: [], //所有的地区--省
-            rules: {}, //表单提交的规则
+            cities: [],            //所有的地区--省
+            rules: {},               //表单提交的规则
             imageUrl: "",
             selectedFile: null
-        };
+        }
     },
     components: {
         Upload
     },
     mixins: [mixin],
     computed: {
-        ...mapGetters(["userId", "avator"])
+        ...mapGetters([
+            'userId', 'avator'
+        ])
     },
     created() {
         this.rules = rules;
         this.cities = cities;
-        console.log(this.avator);
         this.imageUrl = "http://192.168.134.90:9005/my-bucket" + this.avator;
     },
     mounted() {
@@ -125,7 +126,7 @@ export default {
         },
         uploadFile() {
             if (!this.selectedFile) {
-                this.$message.error("请先选择文件！");
+                //this.$message.error("请先选择文件！");
                 return;
             }
             console.log("upload");
@@ -143,7 +144,16 @@ export default {
                 })
                 .then(res => {
                     console.log(res);
+                    console.log('data', res.data.data);
 
+                    const newAvatarUrl = res.data.data;
+                    // 确认 URL 是否正确
+                    console.log("New Avatar URL: ", newAvatarUrl);
+                    // 更新 Vuex Store 中的 avator 状态
+                    this.$store.commit('setAvator', newAvatarUrl);
+
+                    // 强制组件重新渲染
+                    this.$forceUpdate();
                     console.log("File uploaded successfully");
                 })
                 .catch(error => {
@@ -151,52 +161,58 @@ export default {
                 });
         },
         getMsg(userId) {
-            getUserById(userId)
-                .then(res => {
-                    this.registerForm.username = res.username;
-                    this.registerForm.password = res.password;
-                    this.registerForm.sex = res.sex;
-                    this.registerForm.phoneNum = res.phoneNum;
-                    this.registerForm.email = res.email;
-                    this.registerForm.birth = res.birth;
-                    this.registerForm.introduction = res.introduction;
-                    this.registerForm.location = res.location;
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+            this.registerForm.id = this.userId
+            this.registerForm.username = this.$store.getters.username;
+            this.registerForm.password = this.$store.getters.password;
+            this.registerForm.sex = this.$store.getters.sex;
+            this.registerForm.phoneNum = this.$store.getters.phoneNum;
+            this.registerForm.email = this.$store.getters.email;
+            this.registerForm.birth = this.$store.getters.birth;
+            this.registerForm.introduction = this.$store.getters.introduction;
+            this.registerForm.location = this.$store.getters.location;
         },
         saveMsg() {
             let _this = this;
             let d = new Date(this.registerForm.birth);
-            let datetime =
-                d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-            let params = new URLSearchParams();
-            params.append("id", this.userId);
-            params.append("username", this.registerForm.username);
-            params.append("password", this.registerForm.password);
-            params.append("sex", this.registerForm.sex);
-            params.append("phoneNum", this.registerForm.phoneNum);
-            params.append("email", this.registerForm.email);
-            //   params.append("birth", datetime);
-            params.append("introduction", this.registerForm.introduction);
-            params.append("location", this.registerForm.location);
+            let datetime = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`;
+            let params = {
+                id: this.registerForm.id,
+                username: this.registerForm.username,
+                password: this.registerForm.password,
+                sex: this.registerForm.sex,
+                phoneNum: this.registerForm.phoneNum,
+                email: this.registerForm.email,
+                birth: datetime,
+                introduction: this.registerForm.introduction,
+                location: this.registerForm.location
+            }
             updateUserMsg(params)
                 .then(res => {
-                    if (res.code == 1) {
-                        _this.$store.commit("setUsername", this.registerForm.username);
-                        _this.notify("修改成功", "success");
+                    console.log('修改后', params);
+
+                    if (res.code == 200) {
+                        _this.$store.commit('setUsername', this.registerForm.username);
+                        _this.$store.commit('setPassword', this.registerForm.password);
+                        _this.$store.commit('setSex', this.registerForm.sex);
+                        _this.$store.commit('setPhoneNum', this.registerForm.phoneNum);
+                        _this.$store.commit('setEmail', this.registerForm.email);
+                        _this.$store.commit('setLocation', this.registerForm.location);
+                        _this.$store.commit('setIntroduction', this.registerForm.introduction);
+                        _this.$store.commit('setBirth', this.registerForm.birth);
+                        //_this.$store.commit('setAvator',this.registerForm.avator);
+                        _this.notify('修改成功', 'success');
                         this.uploadFile();
+                        //_this.$store.commit('setAvator',this.registerForm.avator);
                         setTimeout(function () {
-                            _this.$router.push({ path: "/" });
+                            //_this.$router.push({path: '/'});
                         }, 2000);
                     } else {
-                        _this.notify("修改失败", "error");
+                        _this.notify('修改失败', 'error');
                     }
                 })
                 .catch(err => {
-                    _this.notify("修改失败", "error");
-                });
+                    _this.notify('修改失败', 'error');
+                })
         },
         goback(index) {
             this.$router.go(index);
@@ -204,6 +220,7 @@ export default {
     }
 };
 </script>
+
 
 <style lang="scss" scoped>
 @import "../assets/css/info.scss";
