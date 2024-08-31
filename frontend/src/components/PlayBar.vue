@@ -263,8 +263,8 @@ methods: {
         this.$store.commit('setListIndex', this.listOfSongs.length - 1)
       }
       this.toplay(this.listOfSongs[this.listIndex].url)
-      this.resetProgress()
-      this.togglePlay() // 确保播放状态被设置为播放
+      this.resetProgress() // 重置进度条和当前时间
+      this.$store.commit('setIsPlay', true) // 确保播放状态被设置为播放
     }
   },
   // 下一首
@@ -276,8 +276,8 @@ methods: {
         this.$store.commit('setListIndex', 0)
       }
       this.toplay(this.listOfSongs[this.listIndex].url)
-      this.resetProgress()
-      this.togglePlay() // 确保播放状态被设置为播放
+      this.resetProgress() // 重置进度条和当前时间
+      this.$store.commit('setIsPlay', true) // 确保播放状态被设置为播放
     }
   },
 
