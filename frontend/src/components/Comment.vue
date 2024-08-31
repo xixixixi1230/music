@@ -144,7 +144,7 @@ export default {
           console.log(this.userName);
         })
         .catch((err) => {
-          this.notify("出错了", "error");
+          // this.notify("出错了", "error");
         });
     },
     //给某一个评论点赞
