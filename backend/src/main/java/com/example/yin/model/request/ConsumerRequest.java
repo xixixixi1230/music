@@ -1,5 +1,9 @@
 package com.example.yin.model.request;
 
+import com.example.yin.config.CustomDateDeserializer;
+import com.example.yin.config.CustomDateSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
 import java.util.Date;
@@ -24,7 +28,8 @@ public class ConsumerRequest {
     private String phoneNum;
 
     private String email;
-
+    @JsonSerialize(using = CustomDateSerializer.class)
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date birth;
 
     private String introduction;

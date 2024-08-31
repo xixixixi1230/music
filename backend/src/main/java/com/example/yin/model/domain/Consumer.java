@@ -1,6 +1,10 @@
 package com.example.yin.model.domain;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.example.yin.config.CustomDateDeserializer;
+import com.example.yin.config.CustomDateSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -21,7 +25,9 @@ public class Consumer {
     private String phoneNum;
     @TableField(value = "email")
     private String email;
-    private String birth;
+    @JsonSerialize(using = CustomDateSerializer.class)
+    @JsonDeserialize(using = CustomDateDeserializer.class)
+    private Date birth;
 
     private String introduction;
 
