@@ -76,6 +76,7 @@ export default {
       }
     },
     handleLoginIn () {
+      event.preventDefault();
       let _this = this
       let params = new URLSearchParams()
       params.append('username', this.loginForm.username)

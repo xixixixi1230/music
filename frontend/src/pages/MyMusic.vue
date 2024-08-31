@@ -2,7 +2,7 @@
     <div class="my-music">
         <div class="album-slide">
             <div class="album-img">
-                <img :src="attachImageUrl(avator)">
+                <img :src="attachImageUrl(avator)" style="">
             </div>
             <ul class="album-info">
                 <li>昵称:{{username}}</li>
@@ -81,7 +81,7 @@ export default {
                             this.getSongsOfIds(item.songId);
                         }
                         console.log(this.collectList);
-                        
+
                     })
                 .catch(err => {
                     console.log(err);

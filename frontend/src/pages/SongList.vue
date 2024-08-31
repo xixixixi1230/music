@@ -77,7 +77,7 @@ export default {
                 .then(res =>{
                         this.currentPage = 1;
                         this.albumDatas = res.data;
-                    })
+                })
         },
 
     }
